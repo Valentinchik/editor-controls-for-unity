@@ -25,8 +25,11 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public GenerateLightingCommand() : base("Generate Lighting", Groups.Project, UnityShortcuts.GenerateLighting) { }
     }
 
-    public sealed class ProfilerRecordCommand : UnityShortcutCommand
+    public sealed class ProfilerRecordCommand : LiveShortcutCommand
     {
         public ProfilerRecordCommand() : base("Profiler Record", Groups.Project, UnityShortcuts.ProfilerRecord) { }
+
+        protected override KeyLook? GetLook(EditorView view) =>
+            view.State?.ProfilerRecording == true ? new KeyLook(KeyRenderer.Failed) : null;
     }
 }

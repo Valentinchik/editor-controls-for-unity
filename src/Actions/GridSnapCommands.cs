@@ -1,8 +1,10 @@
 namespace Loupedeck.UnityEditorControlsPlugin
 {
-    public sealed class ToggleGridSnapCommand : UnityShortcutCommand
+    public sealed class ToggleGridSnapCommand : HighlightShortcutCommand
     {
         public ToggleGridSnapCommand() : base("Grid Snap", Groups.GridSnap, UnityShortcuts.ToggleGridSnap) { }
+
+        protected override Boolean IsOn(EditorState state) => state.GridSnap;
     }
 
     public sealed class PushToGridCommand : UnityShortcutCommand

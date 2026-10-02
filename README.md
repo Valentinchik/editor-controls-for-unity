@@ -1,14 +1,15 @@
 # Editor Controls for Unity
 
 A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials and Actions Ring:
-**91 ready-made actions with icons** and **default profiles for every device**, so there is nothing to set up by hand.
+**93 ready-made actions with icons** and **default profiles for every device**, so there is nothing to set up by hand.
+Add the optional [Unity package](#unity-package) and the keys show live editor state.
 
 ![Default profiles](docs/default-profiles.png)
 
 ## Features
 
-- **91 actions** in 11 groups — Play Mode, Scene View, Grid & Snap, GameObject, Selection, Tools, Windows, Edit,
-  Project, Animation, and 8 dial actions (Undo / Redo, tool switching, animation frames and keys, selection history,
+- **93 actions** in 12 groups — Play Mode, Status, Scene View, Grid & Snap, GameObject, Selection, Tools, Windows,
+  Edit, Project, Animation, and 8 dial actions (Undo / Redo, tool switching, animation frames and keys, selection history,
   grid size, list navigation, frame-by-frame stepping).
 - **Follows your Unity shortcuts.** If you rebound a command in Unity (*Edit → Shortcuts*), the plugin sends your
   binding, including bindings inherited from a parent profile. A command you unbound in Unity does nothing.
@@ -18,6 +19,11 @@ A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials a
 - **9 languages:** English, Russian, German, French, Spanish, Brazilian Portuguese, Japanese, Korean,
   Simplified Chinese.
 - Works on **macOS and Windows**, with any keyboard layout.
+- **Live keys with the Unity package:** Play turns into Stop while the game runs, Pause lights up, the active tool and
+  render mode are highlighted, toggles (2D / 3D, Pivot / Center, Local / Global, snapping, Lock View, Isolate,
+  Overlays, Profiler Record, the selected object's active / hidden / pickable state) show their current state,
+  *Compile* shows compiling / done / failed and *Errors* counts console errors. Actions run even while Unity is in
+  the background.
 
 ## Supported devices
 
@@ -35,7 +41,9 @@ A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials a
   Shaded Wireframe (they exist in 2022 but have no default shortcut; bind them in Unity and the keys work), Unlit,
   Grid & Snap, and Previous / Next Selection.
 - **Logi Options+** with Logi Plugin Service 6.4 or newer.
-- Actions are Unity keyboard shortcuts, so the Unity Editor must be the active window.
+- Without the Unity package, actions are Unity keyboard shortcuts, so the Unity Editor must be the active window.
+  With the package (Unity 2022.3+), most actions run directly through the editor API, and the render-mode and
+  grid-snap actions work in Unity 2022.3 too.
 
 ## Install
 
@@ -45,6 +53,27 @@ A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials a
 Options+ lists apps installed in the top levels of `/Applications`, and Unity Hub installs editors deeper than that, so
 Unity may be missing from Options+' *Add application* list. You don't need it: the plugin adds **Unity Editor** with its
 profiles on install.
+
+## Unity package
+
+The optional companion package `com.valentinchik.editor-controls` connects the editor to the plugin
+(over a local connection on `127.0.0.1` only) for live key states and background control.
+
+Install it in *Window → Package Manager → + → Add package from git URL…*:
+
+```
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity
+```
+
+or add it to `Packages/manifest.json`:
+
+```json
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity"
+```
+
+When the editor connects, the Unity console shows *[Editor Controls] Connected to Logi Options+* and the plugin's
+status in Options+ reads *Connected to Unity: &lt;project&gt;*. The package runs only a fixed list of editor commands
+and accepts connections from the plugin alone (a per-session token stored in a file only your user can read).
 
 ## Building from source
 

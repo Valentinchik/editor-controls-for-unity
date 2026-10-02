@@ -5,7 +5,7 @@ StepCommand	player-track-next
 FrameSelectedCommand	focus-centered
 LockViewCommand	lock
 MaximizeViewCommand	maximize
-Toggle2DCommand	box
+Toggle2DCommand	badge-3d
 ShadedCommand	sphere
 WireframeCommand	cube
 ShadedWireframeCommand	box-model
@@ -13,7 +13,7 @@ UnlitCommand	sun-off
 VertexSnapCommand	magnet
 ToggleOverlaysCommand	layout-board
 IsolateCommand	focus
-ToggleVisibilityCommand	eye-off
+ToggleVisibilityCommand	eye
 TogglePickingCommand	hand-finger
 ToggleGridSnapCommand	grid-dots
 PushToGridCommand	grid-pattern
@@ -22,7 +22,7 @@ DecreaseGridCommand	zoom-out
 CreateEmptyCommand	square-plus
 CreateEmptyChildCommand	subtask
 CreateEmptyParentCommand	hierarchy-2
-ToggleActiveCommand	eye
+ToggleActiveCommand	toggle-right
 DuplicateCommand	copy-plus
 DeleteCommand	trash
 MoveToViewCommand	focus-2
@@ -37,13 +37,13 @@ SelectChildrenCommand	list-tree
 SelectPrefabRootCommand	packages
 PreviousSelectionCommand	arrow-back-up-double
 NextSelectionCommand	arrow-forward-up-double
-HandToolCommand	hand-stop
+HandToolCommand	hand-grab
 MoveToolCommand	arrows-move
-RotateToolCommand	rotate
-ScaleToolCommand	resize
-RectToolCommand	border-corners
-TransformToolCommand	transform
-PivotPositionCommand	target
+RotateToolCommand	rotate-3d
+ScaleToolCommand	arrows-diagonal
+RectToolCommand	vector
+TransformToolCommand	gizmo
+PivotPositionCommand	anchor
 PivotOrientationCommand	world
 SceneWindowCommand	cube-3d-sphere
 GameWindowCommand	device-gamepad-2
@@ -90,3 +90,5 @@ SelectionHistoryAdjustment	arrows-left-right
 GridSizeAdjustment	grid-scan
 NavigateAdjustment	arrows-up-down
 FrameStepAdjustment	clock-play
+CompileStatusCommand	file-code
+ConsoleErrorsCommand	bug

@@ -3,7 +3,7 @@
   <file original="$UnityEditorControls___@general" source-language="en-US" target-language="" datatype="plaintext">
     <header>
       <generator>LogiPluginService 6.4.2.3414</generator>
-      <timestamp>2026-10-02T08-51-20-066</timestamp>
+      <timestamp>2026-10-02T09-52-07-617</timestamp>
       <computer>84fbdffe2fab1788e0c801f9722ed73a019748f422d3f15d475650a0c5053c30</computer>
     </header>
     <body>
@@ -529,6 +529,18 @@
           <source>Edit › Next Selection · Unity 6+</source>
           <target />
         </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CompileStatusCommand" translate="yes">
+          <source>Compile</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ConsoleErrorsCommand" translate="yes">
+          <source>Errors</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ConsoleErrorsCommand###description" translate="yes">
+          <source>Window › General › Console</source>
+          <target />
+        </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.HandToolCommand" translate="yes">
           <source>Hand</source>
           <target />
@@ -635,10 +647,6 @@
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ConsoleWindowCommand" translate="yes">
           <source>Console</source>
-          <target />
-        </trans-unit>
-        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ConsoleWindowCommand###description" translate="yes">
-          <source>Window › General › Console</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationWindowCommand" translate="yes">
@@ -751,6 +759,10 @@
         </trans-unit>
         <trans-unit id="$UnityEditorControls___GroupName___B1440B929B469E2D0009" translate="yes">
           <source>Selection</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___AD39526A1824AB250006" translate="yes">
+          <source>Status</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___GroupName___92160E1CDDF65C8E0005" translate="yes">

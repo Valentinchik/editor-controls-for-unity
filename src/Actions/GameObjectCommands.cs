@@ -15,9 +15,13 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public CreateEmptyParentCommand() : base("Empty Parent", Groups.GameObject, UnityShortcuts.CreateEmptyParent) { }
     }
 
-    public sealed class ToggleActiveCommand : UnityShortcutCommand
+    public sealed class ToggleActiveCommand : LiveShortcutCommand
     {
         public ToggleActiveCommand() : base("Toggle Active", Groups.GameObject, UnityShortcuts.ToggleActive) { }
+
+        // Switch on/off like the active checkbox of the selected GameObject.
+        protected override KeyLook? GetLook(EditorView view) =>
+            view.State?.SelectionActive == false ? new KeyLook(KeyRenderer.Normal, "toggle-left") : null;
     }
 
     public sealed class DuplicateCommand : UnityShortcutCommand

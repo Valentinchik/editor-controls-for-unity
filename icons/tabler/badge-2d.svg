@@ -1,0 +1,18 @@
+<!-- Derived from Tabler Icons "badge-3d" (MIT, see LICENSE): the "3" replaced with a "2" in the same style. -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="icon icon-tabler icons-tabler-outline icon-tabler-badge-2d"
+>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -10" />
+  <path d="M7 10.25a1.25 1.25 0 0 1 2.5 0c0 .55 -.25 1 -.55 1.35l-1.95 3.4h2.5" />
+  <path d="M14 9v6h1a2 2 0 0 0 2 -2v-2a2 2 0 0 0 -2 -2l-1 0" />
+</svg>

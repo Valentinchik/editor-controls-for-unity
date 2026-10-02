@@ -27,6 +27,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public const String Edit = "Edit";
         public const String Project = "Project";
         public const String Animation = "Animation";
+        public const String Status = "Status";
         public const String Dials = "Dials";
     }
 }

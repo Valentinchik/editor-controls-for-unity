@@ -70,7 +70,7 @@ def icon_map() -> dict:
 
 def tabler_paths(icon: str) -> str:
     svg = (ROOT / "icons" / "tabler" / f"{icon}.svg").read_text(encoding="utf-8")
-    return "".join(re.findall(r"<path[^>]*/>", svg))
+    return "".join(re.findall(r"<(?:path|circle|rect|line|polyline|polygon|ellipse)[^>]*/>", svg))
 
 
 def white_svg(icon: str) -> str:

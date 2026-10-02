@@ -32,6 +32,12 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Glyphs and the action → icon map for keys drawn at runtime (KeyRenderer). -->
+    <EmbeddedResource Include="..\icons\tabler\*.svg" LogicalName="tabler.%(Filename).svg" />
+    <EmbeddedResource Include="..\icons\map.tsv" LogicalName="icons.map.tsv" />
+  </ItemGroup>
+
   <Target Name="CopyPackage" AfterTargets="PostBuildEvent">
     <Message Text="📦 Copying package files..." Importance="High" />
     <ItemGroup>

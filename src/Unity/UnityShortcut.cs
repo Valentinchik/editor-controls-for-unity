@@ -41,6 +41,12 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         public void Send(ClientApplication application)
         {
+            // The Unity package runs it directly — works in the background and ignores keyboard layout and rebinding.
+            if (this.Id != null && UnityBridge.TrySend(this.Id))
+            {
+                return;
+            }
+
             var fallback = OperatingSystem.IsWindows() && this._windowsDefault.HasValue ? this._windowsDefault.Value : this._default;
             var binding = this.Id == null ? fallback : UnityShortcutProfile.Resolve(this.Id, this._legacyIds, fallback);
 

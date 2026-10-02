@@ -6,7 +6,7 @@
       "name": "Play & Scene",
       "keys": [
         "PlayCommand", "PauseCommand", "StepCommand",
-        "FrameSelectedCommand", "LockViewCommand", "Toggle2DCommand",
+        "FrameSelectedCommand", "CompileStatusCommand", "ConsoleErrorsCommand",
         "UndoCommand", "RedoCommand", "SaveCommand"
       ]
     },
@@ -37,8 +37,8 @@
     {
       "name": "Project",
       "keys": [
-        "BuildProfilesCommand", "BuildAndRunCommand", "RefreshCommand",
-        "SearchCommand", "MaximizeViewCommand", "ToggleOverlaysCommand",
+        "LockViewCommand", "Toggle2DCommand", "RefreshCommand",
+        "BuildProfilesCommand", "BuildAndRunCommand", "SearchCommand",
         "ProfilerRecordCommand", "GenerateLightingCommand", "UndoHistoryWindowCommand"
       ]
     }
