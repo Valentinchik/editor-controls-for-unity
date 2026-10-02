@@ -407,3 +407,7 @@ src/package/actionicons/
 src/package/actionsymbols/
 src/package/profiles/
 src/package/localization/
+
+# Unity needs the .meta files of the package — they are its asset GUIDs (overrides *.meta above)
+!unity/**/*.meta
+!unity/*.meta
