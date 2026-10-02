@@ -1,0 +1,28 @@
+{
+  "device": "Loupedeck72",
+  "file": "DefaultProfile72.lp5",
+  "pages": [
+    {
+      "name": "Main",
+      "keys": [
+        "PlayCommand", "PauseCommand", "FrameSelectedCommand", "UndoCommand",
+        "RedoCommand", "SaveCommand",
+        {
+          "folder": "Create", "icon": "square-plus",
+          "keys": [
+            "CreateEmptyCommand", "CreateEmptyChildCommand", "CreateEmptyParentCommand", "DuplicateCommand",
+            "AddComponentCommand", "ToggleActiveCommand", "MoveToViewCommand", "DeleteCommand"
+          ]
+        },
+        {
+          "folder": "Windows", "icon": "app-window",
+          "keys": [
+            "SceneWindowCommand", "GameWindowCommand", "InspectorWindowCommand", "HierarchyWindowCommand",
+            "ProjectWindowCommand", "ConsoleWindowCommand", "AnimationWindowCommand", "PackageManagerWindowCommand"
+          ]
+        }
+      ]
+    }
+  ],
+  "dials": [null, null, null, null, null, null, null, null]
+}

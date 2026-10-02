@@ -1,0 +1,46 @@
+{
+  "device": "Loupedeck70",
+  "file": "DefaultProfile70.lp5",
+  "pages": [
+    {
+      "name": "Play & Scene",
+      "keys": [
+        "PlayCommand", "PauseCommand", "StepCommand",
+        "FrameSelectedCommand", "LockViewCommand", "Toggle2DCommand",
+        "UndoCommand", "RedoCommand", "SaveCommand"
+      ]
+    },
+    {
+      "name": "GameObject",
+      "keys": [
+        "CreateEmptyCommand", "CreateEmptyChildCommand", "CreateEmptyParentCommand",
+        "DuplicateCommand", "ToggleActiveCommand", "AddComponentCommand",
+        "MoveToViewCommand", "AlignWithViewCommand", "DeleteCommand"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keys": [
+        "HandToolCommand", "MoveToolCommand", "RotateToolCommand",
+        "ScaleToolCommand", "RectToolCommand", "TransformToolCommand",
+        "PivotPositionCommand", "PivotOrientationCommand", "VertexSnapCommand"
+      ]
+    },
+    {
+      "name": "Windows",
+      "keys": [
+        "SceneWindowCommand", "GameWindowCommand", "InspectorWindowCommand",
+        "HierarchyWindowCommand", "ProjectWindowCommand", "ConsoleWindowCommand",
+        "AnimationWindowCommand", "ProfilerWindowCommand", "PackageManagerWindowCommand"
+      ]
+    },
+    {
+      "name": "Project",
+      "keys": [
+        "BuildProfilesCommand", "BuildAndRunCommand", "RefreshCommand",
+        "SearchCommand", "MaximizeViewCommand", "ToggleOverlaysCommand",
+        "ProfilerRecordCommand", "GenerateLightingCommand", "UndoHistoryWindowCommand"
+      ]
+    }
+  ]
+}

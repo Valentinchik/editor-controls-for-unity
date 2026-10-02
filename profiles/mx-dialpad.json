@@ -1,0 +1,11 @@
+{
+  "device": "Loupedeck71",
+  "file": "DefaultProfile71.lp5",
+  "pages": [
+    {
+      "name": "Main",
+      "keys": ["PlayCommand", "PauseCommand", "FrameSelectedCommand", "SaveCommand"]
+    }
+  ],
+  "dials": ["UndoRedoAdjustment", "ToolCycleAdjustment"]
+}

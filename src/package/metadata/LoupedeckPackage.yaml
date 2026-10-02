@@ -1,0 +1,90 @@
+# ==================================================================================================
+# GENERAL SETTINGS
+# ==================================================================================================
+
+# Package type. Must be plugin4 for plugins.
+type: plugin4
+
+# Name that identifies the plugin.
+name: UnityEditorControls
+
+# Plugin name that is shown to the user.
+displayName: Editor Controls for Unity
+
+# Short description of the plugin.
+description: >
+  90 Unity Editor actions with icons for MX Keypad, MX Creative Console and Actions Ring —
+  play mode, scene view, GameObjects, tools, windows, animation, build. Follows the shortcuts
+  you set in Unity (Edit → Shortcuts). Ready-made profiles for every device.
+
+# Name of the plugin library file.
+pluginFileName: UnityEditorControlsPlugin.dll
+
+# Plugin version.
+version: 0.3.0
+
+# Author of the plugin. The author can be a company or an individual developer.
+author: Valentyn Subbotin
+
+# Copyright information.
+copyright: Copyright © 2026 Valentyn Subbotin. All rights reserved.
+
+
+# ==================================================================================================
+# PLUGIN PROPERTIES
+# ==================================================================================================
+
+# Location of plugin files on Windows (relative to the plugin base directory).
+# This parameter is required to support Windows.
+pluginFolderWin: bin
+
+# Location of plugin files on macOS (relative to the plugin base directory).
+# This parameter is required to support Mac.
+pluginFolderMac: bin
+
+# List of devices the plugin is optimized for.
+supportedDevices:
+    # LoupedeckCtFamily covers the following devices: Loupedeck CT, Live and Live S,
+    # Razer Stream Controller, and Razer Stream Controller X.
+    - LoupedeckCtFamily
+
+    # LogitechCreativeFamily covers MX Creative Console and MX Keypad.
+    - LogitechCreativeFamily
+
+# List of plugin capabilities.
+pluginCapabilities:
+    # Application plugin bound to the Unity Editor (see UnityEditorControlsApplication).
+    - HasApplication
+
+    # Actions send keyboard shortcuts to Unity.
+    - ActivatesApplication
+
+# How Options+ recognizes an installed Unity Editor; without this the plugin is missing from "Supported applications".
+# Every Unity 6.x / 202x editor shares the bundle id, wherever Unity Hub put it.
+applicationPatterns:
+    processNamePattern: ^Unity$
+    bundleNamePattern: ^com\.unity3d\.UnityEditor5\.x$
+    executablePathPattern: \\Editor\\Unity\.exe$
+
+# Minimum Loupedeck version supported by the plugin.
+# 6.4 is the first Logi Plugin Service on .NET 10; this net10.0 build does not load on older services.
+minimumLoupedeckVersion: 6.4
+
+
+# ==================================================================================================
+# LOUPEDECK MARKETPLACE SETTINGS
+# ==================================================================================================
+
+# End user license agreement: EULA.md in the repository root. Third-party components are MIT (see THIRD_PARTY_NOTICES.md).
+license: EULA
+
+# URL of the plugin license.
+licenseUrl: https://github.com/Valentinchik/editor-controls-for-unity/blob/main/EULA.md
+
+# URL of the support page where the users can send improvement suggestions and report bugs.
+# The URL is shown in Loupedeck Marketplace. The page can be for example a GitHub issues page.
+# NOTE: This setting is recommended when publishing the plugin in Loupedeck Marketplace.
+supportPageUrl: https://github.com/Valentinchik/editor-controls-for-unity/issues
+
+# URL of the plugin homepage. The URL is shown in Loupedeck Marketplace.
+homePageUrl: https://github.com/Valentinchik/editor-controls-for-unity

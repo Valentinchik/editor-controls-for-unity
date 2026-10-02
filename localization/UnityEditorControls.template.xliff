@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2">
+  <file original="$UnityEditorControls___@general" source-language="en-US" target-language="" datatype="plaintext">
+    <header>
+      <generator>LogiPluginService 6.4.2.3414</generator>
+      <timestamp>2026-10-02T08-51-20-066</timestamp>
+      <computer>84fbdffe2fab1788e0c801f9722ed73a019748f422d3f15d475650a0c5053c30</computer>
+    </header>
+    <body>
+      <group id="@general">
+        <trans-unit id="$UnityEditorControls___General___ResetDisplayNameTemplate" translate="yes">
+          <source>Reset %</source>
+          <target />
+        </trans-unit>
+      </group>
+      <group id="@modes">
+        <trans-unit id="$UnityEditorControls___ModeName___main" translate="yes">
+          <source>Main</source>
+          <target />
+        </trans-unit>
+      </group>
+      <group id="@resources" />
+    </body>
+  </file>
+  <file original="$UnityEditorControls___main" source-language="en-US" target-language="" datatype="plaintext">
+    <body>
+      <group id="@commands">
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationPlayCommand" translate="yes">
+          <source>Play Animation</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationPlayCommand###description" translate="yes">
+          <source>Animation › Play Animation</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PreviousFrameCommand" translate="yes">
+          <source>Previous Frame</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PreviousFrameCommand###description" translate="yes">
+          <source>Animation › Previous Frame</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NextFrameCommand" translate="yes">
+          <source>Next Frame</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NextFrameCommand###description" translate="yes">
+          <source>Animation › Next Frame</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PreviousKeyframeCommand" translate="yes">
+          <source>Previous Key</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PreviousKeyframeCommand###description" translate="yes">
+          <source>Animation › Previous Keyframe</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NextKeyframeCommand" translate="yes">
+          <source>Next Key</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NextKeyframeCommand###description" translate="yes">
+          <source>Animation › Next Keyframe</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FirstKeyframeCommand" translate="yes">
+          <source>First Key</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FirstKeyframeCommand###description" translate="yes">
+          <source>Animation › First Keyframe</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LastKeyframeCommand" translate="yes">
+          <source>Last Key</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LastKeyframeCommand###description" translate="yes">
+          <source>Animation › Last Keyframe</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.KeySelectedCommand" translate="yes">
+          <source>Add Key</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.KeySelectedCommand###description" translate="yes">
+          <source>Animation › Key Selected</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.KeyModifiedCommand" translate="yes">
+          <source>Key Modified</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.KeyModifiedCommand###description" translate="yes">
+          <source>Animation › Key Modified</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UndoCommand" translate="yes">
+          <source>Undo</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UndoCommand###description" translate="yes">
+          <source>Edit › Undo</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RedoCommand" translate="yes">
+          <source>Redo</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RedoCommand###description" translate="yes">
+          <source>Edit › Redo</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CutCommand" translate="yes">
+          <source>Cut</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CutCommand###description" translate="yes">
+          <source>Edit › Cut</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CopyCommand" translate="yes">
+          <source>Copy</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CopyCommand###description" translate="yes">
+          <source>Edit › Copy</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PasteCommand" translate="yes">
+          <source>Paste</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PasteCommand###description" translate="yes">
+          <source>Edit › Paste</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PasteAsChildCommand" translate="yes">
+          <source>Paste As Child</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PasteAsChildCommand###description" translate="yes">
+          <source>Edit › Paste Special › Paste as Child (Keep Local Transform)</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SaveCommand" translate="yes">
+          <source>Save</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SaveCommand###description" translate="yes">
+          <source>File › Save</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RefreshCommand" translate="yes">
+          <source>Refresh</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RefreshCommand###description" translate="yes">
+          <source>Assets › Refresh</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SearchCommand" translate="yes">
+          <source>Search</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SearchCommand###description" translate="yes">
+          <source>Edit › Search › Search All...</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FindCommand" translate="yes">
+          <source>Find</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FindCommand###description" translate="yes">
+          <source>Edit › Search › Find</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CreateEmptyCommand" translate="yes">
+          <source>Create Empty</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CreateEmptyCommand###description" translate="yes">
+          <source>GameObject › Create Empty</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CreateEmptyChildCommand" translate="yes">
+          <source>Empty Child</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CreateEmptyChildCommand###description" translate="yes">
+          <source>GameObject › Create Empty Child</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CreateEmptyParentCommand" translate="yes">
+          <source>Empty Parent</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CreateEmptyParentCommand###description" translate="yes">
+          <source>GameObject › Create Empty Parent</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleActiveCommand" translate="yes">
+          <source>Toggle Active</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleActiveCommand###description" translate="yes">
+          <source>GameObject › Toggle Active State</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DuplicateCommand" translate="yes">
+          <source>Duplicate</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DuplicateCommand###description" translate="yes">
+          <source>Edit › Duplicate</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DeleteCommand" translate="yes">
+          <source>Delete</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DeleteCommand###description" translate="yes">
+          <source>Edit › Delete</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.MoveToViewCommand" translate="yes">
+          <source>Move To View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.MoveToViewCommand###description" translate="yes">
+          <source>GameObject › Move To View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AlignWithViewCommand" translate="yes">
+          <source>Align With View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AlignWithViewCommand###description" translate="yes">
+          <source>GameObject › Align With View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AddComponentCommand" translate="yes">
+          <source>Add Component</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AddComponentCommand###description" translate="yes">
+          <source>Component › Add...</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FirstSiblingCommand" translate="yes">
+          <source>First Sibling</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FirstSiblingCommand###description" translate="yes">
+          <source>GameObject › Set as first sibling</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LastSiblingCommand" translate="yes">
+          <source>Last Sibling</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LastSiblingCommand###description" translate="yes">
+          <source>GameObject › Set as last sibling</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleGridSnapCommand" translate="yes">
+          <source>Grid Snap</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleGridSnapCommand###description" translate="yes">
+          <source>Grid and Snap › Toggle Snapping · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PushToGridCommand" translate="yes">
+          <source>Push To Grid</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PushToGridCommand###description" translate="yes">
+          <source>Grid and Snap › Push To Grid · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.IncreaseGridCommand" translate="yes">
+          <source>Grid Size +</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.IncreaseGridCommand###description" translate="yes">
+          <source>Grid and Snap › Increase Grid Size · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DecreaseGridCommand" translate="yes">
+          <source>Grid Size −</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DecreaseGridCommand###description" translate="yes">
+          <source>Grid and Snap › Decrease Grid Size · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PlayCommand" translate="yes">
+          <source>Play / Stop</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PlayCommand###description" translate="yes">
+          <source>Edit › Play Mode › Play</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PauseCommand" translate="yes">
+          <source>Pause</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PauseCommand###description" translate="yes">
+          <source>Edit › Play Mode › Pause</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.StepCommand" translate="yes">
+          <source>Step</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.StepCommand###description" translate="yes">
+          <source>Edit › Play Mode › Step</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NewSceneCommand" translate="yes">
+          <source>New Scene</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NewSceneCommand###description" translate="yes">
+          <source>File › New Scene</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.OpenSceneCommand" translate="yes">
+          <source>Open Scene</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.OpenSceneCommand###description" translate="yes">
+          <source>File › Open Scene</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.BuildProfilesCommand" translate="yes">
+          <source>Build Profiles</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.BuildProfilesCommand###description" translate="yes">
+          <source>File › Build Profiles</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.BuildAndRunCommand" translate="yes">
+          <source>Build And Run</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.BuildAndRunCommand###description" translate="yes">
+          <source>File › Build And Run</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.GenerateLightingCommand" translate="yes">
+          <source>Generate Lighting</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.GenerateLightingCommand###description" translate="yes">
+          <source>Edit › Lighting › Generate Lighting</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProfilerRecordCommand" translate="yes">
+          <source>Profiler Record</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProfilerRecordCommand###description" translate="yes">
+          <source>Profiling › Profiler › RecordToggle</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FrameSelectedCommand" translate="yes">
+          <source>Frame Selected</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FrameSelectedCommand###description" translate="yes">
+          <source>Edit › Frame Selected in Window under Cursor</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LockViewCommand" translate="yes">
+          <source>Lock View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LockViewCommand###description" translate="yes">
+          <source>Edit › Lock View to Selected</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.MaximizeViewCommand" translate="yes">
+          <source>Maximize View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.MaximizeViewCommand###description" translate="yes">
+          <source>Window › Maximize View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.Toggle2DCommand" translate="yes">
+          <source>2D / 3D</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.Toggle2DCommand###description" translate="yes">
+          <source>Scene View › Toggle 2D Mode</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ShadedCommand" translate="yes">
+          <source>Shaded</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ShadedCommand###description" translate="yes">
+          <source>Scene View › Render Mode › Shaded · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.WireframeCommand" translate="yes">
+          <source>Wireframe</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.WireframeCommand###description" translate="yes">
+          <source>Scene View › Render Mode › Wireframe · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ShadedWireframeCommand" translate="yes">
+          <source>Shaded Wireframe</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ShadedWireframeCommand###description" translate="yes">
+          <source>Scene View › Render Mode › Shaded Wireframe · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UnlitCommand" translate="yes">
+          <source>Unlit</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UnlitCommand###description" translate="yes">
+          <source>Scene View › Render Mode › Unlit · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.VertexSnapCommand" translate="yes">
+          <source>Vertex Snap</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.VertexSnapCommand###description" translate="yes">
+          <source>Scene View › Toggle Vertex Snapping</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleOverlaysCommand" translate="yes">
+          <source>Overlays</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleOverlaysCommand###description" translate="yes">
+          <source>Overlays › Toggle All Overlays</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.IsolateCommand" translate="yes">
+          <source>Isolate</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.IsolateCommand###description" translate="yes">
+          <source>Scene Visibility › Toggle Isolation On Selection And Descendants</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleVisibilityCommand" translate="yes">
+          <source>Hide / Show</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToggleVisibilityCommand###description" translate="yes">
+          <source>Scene Visibility › Toggle Selection And Descendants Visibility</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TogglePickingCommand" translate="yes">
+          <source>Picking</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TogglePickingCommand###description" translate="yes">
+          <source>Scene Picking › Toggle Picking On Selection And Descendants</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectAllCommand" translate="yes">
+          <source>Select All</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectAllCommand###description" translate="yes">
+          <source>Edit › Select All</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DeselectAllCommand" translate="yes">
+          <source>Deselect All</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.DeselectAllCommand###description" translate="yes">
+          <source>Edit › Deselect All</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.InvertSelectionCommand" translate="yes">
+          <source>Invert Selection</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.InvertSelectionCommand###description" translate="yes">
+          <source>Edit › Invert Selection</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectChildrenCommand" translate="yes">
+          <source>Select Children</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectChildrenCommand###description" translate="yes">
+          <source>Edit › Select Children</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectPrefabRootCommand" translate="yes">
+          <source>Prefab Root</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectPrefabRootCommand###description" translate="yes">
+          <source>Edit › Select Prefab Root</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PreviousSelectionCommand" translate="yes">
+          <source>Previous Selection</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PreviousSelectionCommand###description" translate="yes">
+          <source>Edit › Previous Selection · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NextSelectionCommand" translate="yes">
+          <source>Next Selection</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NextSelectionCommand###description" translate="yes">
+          <source>Edit › Next Selection · Unity 6+</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.HandToolCommand" translate="yes">
+          <source>Hand</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.HandToolCommand###description" translate="yes">
+          <source>Tools › View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.MoveToolCommand" translate="yes">
+          <source>Move</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.MoveToolCommand###description" translate="yes">
+          <source>Tools › Move</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RotateToolCommand" translate="yes">
+          <source>Rotate</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RotateToolCommand###description" translate="yes">
+          <source>Tools › Rotate</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ScaleToolCommand" translate="yes">
+          <source>Scale</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ScaleToolCommand###description" translate="yes">
+          <source>Tools › Scale</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RectToolCommand" translate="yes">
+          <source>Rect</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RectToolCommand###description" translate="yes">
+          <source>Tools › Rect</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TransformToolCommand" translate="yes">
+          <source>Transform</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TransformToolCommand###description" translate="yes">
+          <source>Tools › Transform</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PivotPositionCommand" translate="yes">
+          <source>Pivot / Center</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PivotPositionCommand###description" translate="yes">
+          <source>Tools › Toggle Pivot Position</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PivotOrientationCommand" translate="yes">
+          <source>Local / Global</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PivotOrientationCommand###description" translate="yes">
+          <source>Tools › Toggle Pivot Orientation</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SceneWindowCommand" translate="yes">
+          <source>Scene</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SceneWindowCommand###description" translate="yes">
+          <source>Window › General › Scene</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.GameWindowCommand" translate="yes">
+          <source>Game</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.GameWindowCommand###description" translate="yes">
+          <source>Window › General › Game</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.InspectorWindowCommand" translate="yes">
+          <source>Inspector</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.InspectorWindowCommand###description" translate="yes">
+          <source>Window › General › Inspector</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.HierarchyWindowCommand" translate="yes">
+          <source>Hierarchy</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.HierarchyWindowCommand###description" translate="yes">
+          <source>Window › General › Hierarchy</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProjectWindowCommand" translate="yes">
+          <source>Project</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProjectWindowCommand###description" translate="yes">
+          <source>Window › General › Project</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ConsoleWindowCommand" translate="yes">
+          <source>Console</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ConsoleWindowCommand###description" translate="yes">
+          <source>Window › General › Console</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationWindowCommand" translate="yes">
+          <source>Animation</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationWindowCommand###description" translate="yes">
+          <source>Window › Animation › Animation</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProfilerWindowCommand" translate="yes">
+          <source>Profiler</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProfilerWindowCommand###description" translate="yes">
+          <source>Window › Analysis › Profiler</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AudioMixerWindowCommand" translate="yes">
+          <source>Audio Mixer</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AudioMixerWindowCommand###description" translate="yes">
+          <source>Window › Audio › Audio Mixer</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LightingWindowCommand" translate="yes">
+          <source>Lighting</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.LightingWindowCommand###description" translate="yes">
+          <source>Window › Rendering › Lighting</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PackageManagerWindowCommand" translate="yes">
+          <source>Package Manager</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.PackageManagerWindowCommand###description" translate="yes">
+          <source>Window › Package Management › Services</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UndoHistoryWindowCommand" translate="yes">
+          <source>Undo History</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UndoHistoryWindowCommand###description" translate="yes">
+          <source>Window › General › Undo History</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___#DynamicFolder" translate="yes">
+          <source>Dynamic Folder</source>
+          <target />
+        </trans-unit>
+      </group>
+      <group id="@adjustments">
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.UndoRedoAdjustment" translate="yes">
+          <source>Undo / Redo</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationFrameAdjustment" translate="yes">
+          <source>Animation Frames</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.AnimationKeyframeAdjustment" translate="yes">
+          <source>Animation Keys</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.SelectionHistoryAdjustment" translate="yes">
+          <source>Selection History</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.GridSizeAdjustment" translate="yes">
+          <source>Grid Size</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NavigateAdjustment" translate="yes">
+          <source>Navigate List</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FrameStepAdjustment" translate="yes">
+          <source>Frame Step</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ToolCycleAdjustment" translate="yes">
+          <source>Tool</source>
+          <target />
+        </trans-unit>
+      </group>
+      <group id="@groups">
+        <trans-unit id="$UnityEditorControls___GroupName___983AFF4B81BAB75D0004" translate="yes">
+          <source>Edit</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___65782BB7B91AE6E6000A" translate="yes">
+          <source>GameObject</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___94C247BD7668920B000B" translate="yes">
+          <source>Grid &amp; Snap</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___3CE49C5BF725892A0009" translate="yes">
+          <source>Play Mode</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___3141692F0C1C04BE000A" translate="yes">
+          <source>Scene View</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___B1440B929B469E2D0009" translate="yes">
+          <source>Selection</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___92160E1CDDF65C8E0005" translate="yes">
+          <source>Tools</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___45C25E9E2FA8C6F60007" translate="yes">
+          <source>Windows</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___0B3D049789A0A1C60005" translate="yes">
+          <source>Dials</source>
+          <target />
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
