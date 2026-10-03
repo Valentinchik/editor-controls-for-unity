@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.2 — 2026-10-03
+
+- *Reload Domain*: reloads scripts without recompiling.
+- *Clean Play*: reloads the domain and enters Play Mode — or restarts a running game — so a project that enters
+  Play Mode without a domain reload gets fresh static state, without changing its Enter Play Mode settings. In a
+  project that reloads the domain on Play anyway, it simply plays.
+
 ## 0.5.1 — 2026-10-03
 
 - Test keys can run only selected test assemblies (*Preferences → Editor Controls for Unity → Run Tests keys*), so

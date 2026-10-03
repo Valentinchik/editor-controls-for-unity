@@ -100,6 +100,8 @@ namespace Valentinchik.EditorControls
             Add("Profiling/Profiler/RecordToggle", () => { ProfilerDriver.enabled = !ProfilerDriver.enabled; return true; });
 
             // Bridge-only actions (no Unity shortcut behind them); listed only when this editor can run them.
+            Add(DomainReload.ReloadCommand, DomainReload.Reload);
+            Add(DomainReload.CleanPlayCommand, DomainReload.CleanPlay);
             if (TestRuns.Available)
             {
                 Add(TestRuns.RunEditModeCommand, () => { TestRuns.Run(false); return true; });

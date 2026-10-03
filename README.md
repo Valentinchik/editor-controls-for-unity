@@ -1,7 +1,7 @@
 # Editor Controls for Unity
 
 A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials and Actions Ring:
-**103 ready-made actions with icons**, **6 dynamic folders** and **default profiles for every device**, so there is
+**105 ready-made actions with icons**, **6 dynamic folders** and **default profiles for every device**, so there is
 nothing to set up by hand. Add the optional [Unity package](#unity-package) and the keys show live editor state,
 folders fill with your project's scenes, layouts and assets, and an MX Master 4 vibrates when the editor needs you.
 
@@ -9,7 +9,7 @@ folders fill with your project's scenes, layouts and assets, and an MX Master 4 
 
 ## Features
 
-- **103 actions** in 14 groups — Play Mode, Status, Tests, Scene View, Grid & Snap, GameObject, Selection, Tools,
+- **105 actions** in 14 groups — Play Mode, Status, Tests, Scene View, Grid & Snap, GameObject, Selection, Tools,
   Windows, Edit, Project, Animation, Folders, and 9 dial actions (Undo / Redo, tool switching, time scale, animation
   frames and keys, selection history, grid size, list navigation, frame-by-frame stepping).
 - **Follows your Unity shortcuts.** If you rebound a command in Unity (*Edit → Shortcuts*), the plugin sends your
@@ -32,6 +32,9 @@ With the [Unity package](#unity-package):
   your saved window layouts), *Camera Bookmarks* (7 saved Scene View cameras per scene — an empty slot saves the
   view, a filled one flies back to it), *Recent Assets* and *Favorites* (prefabs open in Prefab Mode, scenes and
   scripts open, everything else is selected).
+- **Reload Domain / Clean Play** for projects that enter Play Mode without a domain reload (*Enter Play Mode
+  Options*): reload scripts without recompiling, or start the game — or restart it — from a fresh domain, so static
+  state from earlier Play sessions is gone. The project setting itself stays as it is.
 - **Time scale** in Play Mode: 0.25× / 1× / 2× keys, *Slow Down* / *Speed Up* along
   0.05 · 0.1 · 0.25 · 0.5 · 0.75 · 1 · 1.5 · 2 · 4 · 8, and a dial (press to reset). The keys show the current value.
 - **Tests:** *Run EditMode Tests* and *Run PlayMode Tests* show progress while running, then `passed / total` in green
@@ -82,13 +85,13 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.1
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.2
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.1"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.2"
 ```
 
 With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard

@@ -3,7 +3,7 @@
   <file original="$UnityEditorControls___@general" source-language="en-US" target-language="" datatype="plaintext">
     <header>
       <generator>LogiPluginService 6.4.2.3414</generator>
-      <timestamp>2026-10-02T11-25-08-213</timestamp>
+      <timestamp>2026-10-03T06-40-22-965</timestamp>
       <computer>84fbdffe2fab1788e0c801f9722ed73a019748f422d3f15d475650a0c5053c30</computer>
     </header>
     <body>
@@ -319,6 +319,22 @@
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.StepCommand###description" translate="yes">
           <source>Edit › Play Mode › Step</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ReloadDomainCommand" translate="yes">
+          <source>Reload Domain</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ReloadDomainCommand###description" translate="yes">
+          <source>Reloads scripts without recompiling, resetting static state</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CleanPlayCommand" translate="yes">
+          <source>Clean Play</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CleanPlayCommand###description" translate="yes">
+          <source>Reloads the domain, then enters Play Mode; restarts the game if it is running</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NewSceneCommand" translate="yes">

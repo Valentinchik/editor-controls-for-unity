@@ -108,3 +108,5 @@ LayoutsFolder	layout-dashboard
 CameraBookmarksFolder	bookmarks
 RecentAssetsFolder	history
 FavoritesFolder	star
+ReloadDomainCommand	reload
+CleanPlayCommand	sparkles

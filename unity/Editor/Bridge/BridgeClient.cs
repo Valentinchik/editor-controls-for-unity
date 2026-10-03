@@ -16,7 +16,7 @@ namespace Valentinchik.EditorControls
     internal static class BridgeClient
     {
         private const int Protocol = 1;
-        private const string PackageVersion = "0.5.1";
+        private const string PackageVersion = "0.5.2";
         private const int RetryMilliseconds = 2000;
         private const string ConnectedOnceKey = "Valentinchik.EditorControls.ConnectedOnce";
 
@@ -259,7 +259,7 @@ namespace Valentinchik.EditorControls
         private static void OnBeforeAssemblyReload()
         {
             // Lets the plugin show "compiling" instead of "disconnected" while the domain reloads.
-            Send(JsonUtility.ToJson(new ReloadingMessage { playMode = EditorApplication.isPlayingOrWillChangePlaymode }));
+            Send(JsonUtility.ToJson(new ReloadingMessage { playMode = EditorApplication.isPlayingOrWillChangePlaymode || DomainReload.PlayPending }));
             Stop();
         }
 
