@@ -29,7 +29,7 @@ namespace Valentinchik.EditorControls
         // " %#t", " _g", " &k" — the hotkey suffix of a [MenuItem] path, not part of the menu name.
         private static readonly Regex HotkeySuffix = new Regex(@"\s+[%#&_^]\S*$");
         private static readonly string[] BuiltInMenuRoots = { "File", "Edit", "Assets", "GameObject", "Component", "Window", "Help" };
-        private static readonly Dictionary<string, MethodInfo> Methods = new Dictionary<string, MethodInfo>();
+        private static readonly Dictionary<string, (MethodInfo Method, string Label)> Methods = new Dictionary<string, (MethodInfo, string)>();
 
         private static readonly Dictionary<string, Func<ListItem[]>> Builders = new Dictionary<string, Func<ListItem[]>>
         {
@@ -103,18 +103,43 @@ namespace Valentinchik.EditorControls
             }
         }
 
+        // Each key press is its own undo step: calls arrive from the editor loop without an input event, so Unity would
+        // otherwise merge two presses (or a press and the user's next edit) into one Ctrl/Cmd+Z.
         public static void RunTool(string id)
         {
             if (id.StartsWith(MenuPrefix, StringComparison.Ordinal))
             {
-                if (!EditorApplication.ExecuteMenuItem(id.Substring(MenuPrefix.Length)))
+                var path = id.Substring(MenuPrefix.Length);
+                AsUndoStep(path.Substring(path.LastIndexOf('/') + 1), () =>
                 {
-                    Debug.LogWarning($"[Editor Controls] Menu item '{id.Substring(MenuPrefix.Length)}' was not found or is disabled.");
-                }
+                    if (!EditorApplication.ExecuteMenuItem(path))
+                    {
+                        Debug.LogWarning($"[Editor Controls] Menu item '{path}' was not found or is disabled.");
+                    }
+                });
             }
-            else if (Methods.TryGetValue(id, out var method))
+            else if (Methods.TryGetValue(id, out var tool))
             {
-                method.Invoke(null, null);
+                AsUndoStep(tool.Label, () => tool.Method.Invoke(null, null));
+            }
+            else
+            {
+                Debug.LogWarning($"[Editor Controls] '{id}' is not in this project (renamed, removed, or a key from another project).");
+            }
+        }
+
+        private static void AsUndoStep(string name, Action run)
+        {
+            Undo.IncrementCurrentGroup();
+            Undo.SetCurrentGroupName(name);
+            var group = Undo.GetCurrentGroup();
+            try
+            {
+                run();
+            }
+            finally
+            {
+                Undo.CollapseUndoOperations(group);
             }
         }
 
@@ -146,9 +171,9 @@ namespace Valentinchik.EditorControls
 
                 var attribute = method.GetCustomAttribute<EditorControlsActionAttribute>();
                 var id = $"{MethodPrefix}{method.DeclaringType?.FullName}.{method.Name}";
-                Methods[id] = method;
                 var group = string.IsNullOrWhiteSpace(attribute.Group) ? null : attribute.Group.Trim();
                 var label = attribute.Label ?? ObjectNames.NicifyVariableName(method.Name);
+                Methods[id] = (method, label);
                 actions.Add((attribute.Order, new ListItem { id = id, label = label, icon = attribute.Icon, group = group }));
             }
 

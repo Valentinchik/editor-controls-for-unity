@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.1 — 2026-10-03
+
+- The Unity package (`unity/`), the agent skill (`skills/`) and the code examples in the docs are now MIT-licensed,
+  so they can go into any project, commercial ones included. The plugin itself stays under the EULA.
+- Every project-tool key press is its own undo step, named after the tool — two presses in a row no longer merge
+  into one Ctrl/Cmd+Z.
+- A key bound to a tool that no longer exists (renamed, removed) logs a warning instead of doing nothing.
+- The agent skill, after a blind test by a fresh agent: finding the package version for any install type, checking
+  what the plugin already does before writing a tool, per-session reset for a cheat's own state, a warning that
+  renaming a tool's method disconnects its keys, and which checks only the user can make.
+
 ## 0.6.0 — 2026-10-03
 
 - Tool groups: `[EditorControlsAction(Group = "Cheats")]`. The *Project Tools* folder shows groups as subfolders

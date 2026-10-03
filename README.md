@@ -85,13 +85,13 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.0
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.1
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.0"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.1"
 ```
 
 With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard
@@ -189,8 +189,12 @@ overwritten by a newer default. `python3 profiles/build_profile.py --docs` re-re
 
 ## License
 
-[End User License Agreement](EULA.md). Third-party components: [Tabler Icons](https://github.com/tabler/tabler-icons),
-MIT — see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- **Plugin** — free to use, see the [End User License Agreement](EULA.md).
+- **Unity package** ([`unity/`](unity/LICENSE.md)), **agent skill** ([`skills/`](skills/editor-controls-actions/LICENSE))
+  and the code examples in [`docs/`](docs/) — [MIT](unity/LICENSE.md): add them to your projects, commercial ones
+  included, and change them freely.
+- Third-party components: [Tabler Icons](https://github.com/tabler/tabler-icons), MIT — see
+  [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Unity is a trademark of Unity Technologies; Logitech, Logi, MX and Options+ are trademarks of Logitech.
 This is an independent project, not affiliated with or endorsed by either.

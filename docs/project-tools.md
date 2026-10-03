@@ -18,7 +18,7 @@ in the Logi Options+ side panel.
 ## Requirements
 
 - The plugin from [Releases](https://github.com/Valentinchik/editor-controls-for-unity/releases) and the Unity package
-  `https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.0` (Unity 2022.3+).
+  `https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.1` (Unity 2022.3+).
 - `Group` needs package 0.6.0+, `Order` 0.5.3+.
 - The attribute is a compile-time dependency: in a team project, commit the `Packages/manifest.json` line together
   with the code that uses it.
@@ -62,6 +62,9 @@ The list comes from the Unity project in front (or the one you used last). The p
 so keys keep their names and icons while Unity is closed, and the side panel keeps the entries; a project's entries
 are refreshed whenever it reports its list.
 
+A key bound to a single tool remembers it by `Namespace.Type.Method`. Renaming or moving the method, its class or its
+namespace disconnects that key — bind it again from the side panel. Changing the label, icon, group or order is safe.
+
 ## Editor code, runtime code and asmdefs
 
 The package's assembly is editor-only and referenced automatically by Unity's predefined assemblies.
@@ -96,15 +99,17 @@ public static class EconomyCheats
 }
 ```
 
-Check `Application.isPlaying` first, reach game state the way your project already does, and avoid new static
-state — with *Enter Play Mode Options* it survives from one Play session to the next (the *Clean Play* key starts
-from a fresh domain when you need it).
+Check `Application.isPlaying` first and reach game state the way your project already does. With *Enter Play Mode
+Options* static fields survive from one Play session to the next, so a cheat's own state (say, the time scale before a
+pause) needs a reset in `[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]` — or use
+the *Clean Play* key to start from a fresh domain.
 
 ## Good keypad tools
 
 - A short label: it has to fit on a key.
 - Context from the editor (`Selection`, the active scene, the Scene View), not parameters.
-- Undo for every scene or asset change.
+- Undo for every scene or asset change. Each key press is its own undo step (the package opens an undo group named
+  after the tool), so one Ctrl/Cmd+Z takes the whole press back.
 - A console message saying what happened — or why nothing did (the keypad cannot grey a key out the way a menu
   validator does).
 - No modal dialogs on the main path.
@@ -136,3 +141,7 @@ To use it with Claude Code, copy the folder into your Unity project:
 
 Then ask for things like *"add a cheat that refills ammo to my keypad, in the Cheats group"* — the agent follows the
 rules above: correct attribute and placement, Play Mode guard, undo, console messages, no package-dependency surprises.
+
+## License
+
+The code examples on this page, the Unity package and the agent skill are MIT-licensed — see [unity/LICENSE.md](../unity/LICENSE.md).

@@ -13,6 +13,11 @@ not agree, do not install or use the Plugin.
 The Author grants you a free, non-exclusive, worldwide, non-transferable license to install and use
 the Plugin on any number of computers you own or control, for personal and commercial purposes.
 
+The Unity package (the `unity/` folder of the Plugin's repository, `com.valentinchik.editor-controls`), the agent
+skill (the `skills/` folder) and the code examples in the documentation are not covered by this Agreement. They are
+licensed under the MIT License — see the `LICENSE` files in those folders — so you may add them to your own projects,
+commercial ones included, and change them.
+
 ## 2. Restrictions
 
 You may not:

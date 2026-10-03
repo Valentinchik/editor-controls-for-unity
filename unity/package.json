@@ -1,6 +1,6 @@
 {
   "name": "com.valentinchik.editor-controls",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "displayName": "Editor Controls for Unity — Bridge",
   "description": "Companion package for the Editor Controls for Unity plugin for Logi Options+ (MX Keypad, MX Creative Console, Actions Ring). Shows live editor state on your keys — play mode, compilation, console errors, active tool, tests — runs actions even while Unity is in the background, fills the plugin's folders with your scenes, layouts, tools and assets, and drives MX Master 4 haptics.",
   "unity": "2022.3",
@@ -11,7 +11,8 @@
   },
   "documentationUrl": "https://github.com/Valentinchik/editor-controls-for-unity#unity-package",
   "changelogUrl": "https://github.com/Valentinchik/editor-controls-for-unity/blob/main/CHANGELOG.md",
-  "licensesUrl": "https://github.com/Valentinchik/editor-controls-for-unity/blob/main/EULA.md",
+  "license": "MIT",
+  "licensesUrl": "https://github.com/Valentinchik/editor-controls-for-unity/blob/main/unity/LICENSE.md",
   "keywords": [
     "logitech",
     "logi options+",
