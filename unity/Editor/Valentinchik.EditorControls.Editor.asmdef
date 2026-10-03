@@ -1,7 +1,10 @@
 {
     "name": "Valentinchik.EditorControls.Editor",
     "rootNamespace": "Valentinchik.EditorControls",
-    "references": [],
+    "references": [
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner"
+    ],
     "includePlatforms": [
         "Editor"
     ],
@@ -9,8 +12,14 @@
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.test-framework",
+            "expression": "1.1.0",
+            "define": "EDITOR_CONTROLS_TEST_FRAMEWORK"
+        }
+    ],
     "noEngineReferences": false
 }

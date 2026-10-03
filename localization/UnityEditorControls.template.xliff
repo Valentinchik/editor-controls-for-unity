@@ -3,7 +3,7 @@
   <file original="$UnityEditorControls___@general" source-language="en-US" target-language="" datatype="plaintext">
     <header>
       <generator>LogiPluginService 6.4.2.3414</generator>
-      <timestamp>2026-10-02T09-52-07-617</timestamp>
+      <timestamp>2026-10-02T11-25-08-213</timestamp>
       <computer>84fbdffe2fab1788e0c801f9722ed73a019748f422d3f15d475650a0c5053c30</computer>
     </header>
     <body>
@@ -541,6 +541,54 @@
           <source>Window › General › Console</source>
           <target />
         </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunEditModeTestsCommand" translate="yes">
+          <source>Run EditMode Tests</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunEditModeTestsCommand###description" translate="yes">
+          <source>Runs the project's tests with the Unity Test Framework</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunPlayModeTestsCommand" translate="yes">
+          <source>Run PlayMode Tests</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TestVibrationCommand" translate="yes">
+          <source>Test Vibration</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TestVibrationCommand###description" translate="yes">
+          <source>Vibrates an MX Master 4 mouse</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleQuarterCommand" translate="yes">
+          <source>Time Scale 0.25×</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleQuarterCommand###description" translate="yes">
+          <source>Sets Time.timeScale in Play Mode</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleNormalCommand" translate="yes">
+          <source>Time Scale 1×</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleDoubleCommand" translate="yes">
+          <source>Time Scale 2×</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleSlowerCommand" translate="yes">
+          <source>Slow Down</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleSlowerCommand###description" translate="yes">
+          <source>Changes Time.timeScale in Play Mode by one step</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleFasterCommand" translate="yes">
+          <source>Speed Up</source>
+          <target />
+        </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.HandToolCommand" translate="yes">
           <source>Hand</source>
           <target />
@@ -697,6 +745,22 @@
           <source>Window › General › Undo History</source>
           <target />
         </trans-unit>
+        <trans-unit id="$UnityEditorControls___ResetLoupedeck.UnityEditorControlsPlugin.TimeScaleAdjustment" translate="yes">
+          <source>Reset Time Scale</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___ResetLoupedeck.UnityEditorControlsPlugin.TimeScaleAdjustment###description" translate="yes">
+          <source>Changes Time.timeScale in Play Mode; press to reset to 1×</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunMenuItemCommand" translate="yes">
+          <source>Run Menu Item</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunMenuItemCommand###description" translate="yes">
+          <source>Runs any Unity menu item chosen in the action settings (needs the Unity package)</source>
+          <target />
+        </trans-unit>
         <trans-unit id="$UnityEditorControls___#DynamicFolder" translate="yes">
           <source>Dynamic Folder</source>
           <target />
@@ -735,7 +799,35 @@
           <source>Tool</source>
           <target />
         </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleAdjustment" translate="yes">
+          <source>Time Scale</source>
+          <target />
+        </trans-unit>
       </group>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.ScenesFolder" translate="yes">
+        <source>Scenes</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.ProjectToolsFolder" translate="yes">
+        <source>Project Tools</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.LayoutsFolder" translate="yes">
+        <source>Layouts</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.RecentAssetsFolder" translate="yes">
+        <source>Recent Assets</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.FavoritesFolder" translate="yes">
+        <source>Favorites</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.CameraBookmarksFolder" translate="yes">
+        <source>Camera Bookmarks</source>
+        <target />
+      </trans-unit>
       <group id="@groups">
         <trans-unit id="$UnityEditorControls___GroupName___983AFF4B81BAB75D0004" translate="yes">
           <source>Edit</source>
@@ -765,6 +857,10 @@
           <source>Status</source>
           <target />
         </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___82489F7B63D378480005" translate="yes">
+          <source>Tests</source>
+          <target />
+        </trans-unit>
         <trans-unit id="$UnityEditorControls___GroupName___92160E1CDDF65C8E0005" translate="yes">
           <source>Tools</source>
           <target />
@@ -775,6 +871,14 @@
         </trans-unit>
         <trans-unit id="$UnityEditorControls___GroupName___0B3D049789A0A1C60005" translate="yes">
           <source>Dials</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___B222E03C377E4B05000F" translate="yes">
+          <source>Dynamic Folders</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___GroupName___395642D635C79F240007" translate="yes">
+          <source>Folders</source>
           <target />
         </trans-unit>
       </group>

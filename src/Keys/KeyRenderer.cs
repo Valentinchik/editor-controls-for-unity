@@ -17,6 +17,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public static readonly BitmapColor Busy = new(0xFF, 0xB2, 0x24);
         public static readonly BitmapColor Failed = new(0xFF, 0x5A, 0x52);
         public static readonly BitmapColor Good = new(0x3D, 0xD6, 0x8C);
+        public static readonly BitmapColor Dim = new(0x80, 0x80, 0x80);
 
         private static readonly Assembly Assembly = typeof(KeyRenderer).Assembly;
         private static readonly ConcurrentDictionary<String, BitmapImage> Glyphs = new();
@@ -31,7 +32,8 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         private static BitmapImage Vector(String icon) => Vectors.GetOrAdd(icon, name =>
         {
-            using var stream = Assembly.GetManifestResourceStream($"tabler.{name}.svg");
+            // An unknown name (e.g. a typo in [EditorControlsAction(Icon = ...)]) falls back to a tool glyph.
+            using var stream = Assembly.GetManifestResourceStream($"tabler.{name}.svg") ?? Assembly.GetManifestResourceStream("tabler.tool.svg");
             using var reader = new StreamReader(stream);
             return BitmapImage.FromSvg(reader.ReadToEnd().Replace("stroke=\"currentColor\"", "stroke=\"#FFFFFF\""));
         });

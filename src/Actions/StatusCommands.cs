@@ -8,7 +8,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         protected override KeyLook? GetLook(EditorView view)
         {
-            if (view.Reloading || view.State?.Compiling == true)
+            if (view.Compiling)
             {
                 return new KeyLook(KeyRenderer.Busy, "loader-2");
             }

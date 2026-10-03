@@ -28,7 +28,9 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public String ProjectPath { get; private set; }
         public String UnityVersion { get; private set; }
         public EditorState State { get; private set; }
+        public EditorCatalog Catalog { get; private set; } = EditorCatalog.Empty;
         public Boolean Reloading { get; private set; }
+        public Boolean ReloadingForPlayMode { get; private set; }
         public DateTime LastFocusedUtc { get; private set; }
 
         public Boolean Supports(String commandId) => this._commands.Contains(commandId);
@@ -128,6 +130,13 @@ namespace Loupedeck.UnityEditorControlsPlugin
                     break;
                 case "reloading":
                     this.Reloading = true;
+                    this.ReloadingForPlayMode = message.TryGetProperty("playMode", out var playMode) && playMode.GetBoolean();
+                    break;
+                case "list":
+                    var (name, items) = EditorCatalog.ParseList(message);
+                    this.Catalog = this.Catalog.With(name, items);
+                    PluginLog.Verbose($"List '{name}' from {this.Project}: {items.Count} items");
+                    UnityBridge.NotifyChanged();
                     break;
             }
         }

@@ -3,6 +3,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Valentinchik.EditorControls
 {
@@ -42,6 +43,12 @@ namespace Valentinchik.EditorControls
                 viewLocked = view != null && Read(() => (bool)ViewLockedToObject.GetValue(view)),
                 overlays = view != null && Read(() => OverlaysEnabled(view), true),
                 profilerRecording = ProfilerDriver.enabled,
+                activeScene = SceneManager.GetActiveScene().path,
+                timeScale = Time.timeScale,
+                layout = WindowLayouts.Current,
+                bookmarks = CameraBookmarks.Mask(),
+                editModeTests = TestRuns.EditMode,
+                playModeTests = TestRuns.PlayMode,
                 selectionActive = selected == null ? -1 : selected.activeSelf ? 1 : 0,
                 selectionHidden = selected == null ? -1 : visibility.IsHidden(selected) ? 1 : 0,
                 selectionUnpickable = selected == null ? -1 : visibility.IsPickingDisabled(selected) ? 1 : 0,

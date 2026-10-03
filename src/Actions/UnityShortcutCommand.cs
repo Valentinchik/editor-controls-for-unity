@@ -28,6 +28,8 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public const String Project = "Project";
         public const String Animation = "Animation";
         public const String Status = "Status";
+        public const String Tests = "Tests";
+        public const String Folders = "Folders";
         public const String Dials = "Dials";
     }
 }

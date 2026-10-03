@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.5.0 — 2026-10-03
+
+- Haptic feedback on MX Master 4: compilation succeeded / failed, Play Mode entered / exited, new console error,
+  tests passed / failed — each with its own waveform, changeable in Options+. *Test Vibration* action to check it.
+- Dynamic folders filled from the open project: *Scenes*, *Project Tools*, *Layouts*, *Camera Bookmarks*,
+  *Recent Assets*, *Favorites*.
+- *Project Tools* lists methods marked `[EditorControlsAction]` and menu items under the menus set in
+  *Preferences → Editor Controls for Unity*.
+- Camera bookmarks: 7 saved Scene View cameras per scene; favorites via *Assets → Editor Controls → Add to Favorites*.
+- Time scale in Play Mode: 0.25× / 1× / 2×, *Slow Down* / *Speed Up* and a *Time Scale* dial; keys show the value.
+- *Run EditMode Tests* / *Run PlayMode Tests* with progress and the result on the key (needs the Test Framework).
+- *Run Menu Item*: a configurable action — pick any Unity menu item in the action's settings.
+- New *Workflow* page in the MX Keypad default profile.
+- Entering Play Mode with domain reload no longer counts as a compilation.
+
 ## 0.4.0 — 2026-10-02
 
 - Unity companion package `com.valentinchik.editor-controls` (Unity 2022.3+), installed from git URL.

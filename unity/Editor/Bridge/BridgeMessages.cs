@@ -58,6 +58,15 @@ namespace Valentinchik.EditorControls
         public bool viewLocked;
         public bool overlays;
         public bool profilerRecording;
+        public string activeScene;
+        public float timeScale;
+        public string layout;
+
+        // Bit n is set when camera bookmark n exists for the active scene.
+        public int bookmarks;
+
+        public TestRunState editModeTests = new TestRunState();
+        public TestRunState playModeTests = new TestRunState();
 
         // About the active GameObject: -1 nothing selected, 0 no, 1 yes.
         public int selectionActive;
@@ -66,15 +75,58 @@ namespace Valentinchik.EditorControls
     }
 
     [Serializable]
+    internal class TestRunState
+    {
+        public const int None = 0;
+        public const int Running = 1;
+        public const int Finished = 2;
+
+        public int status;
+
+        // Finished runs this editor session; a run shorter than one state update still bumps it.
+        public int runs;
+        public int total;
+        public int done;
+        public int passed;
+        public int failed;
+        public int skipped;
+    }
+
+    // One list for a dynamic folder or an action editor: scenes, tools, layouts, recent, favorites, menus.
+    [Serializable]
+    internal class ListMessage
+    {
+        public string type = "list";
+        public string name;
+        public ListItem[] items;
+    }
+
+    [Serializable]
+    internal class ListItem
+    {
+        public string id;
+        public string label;
+        public string icon;
+    }
+
+    [Serializable]
     internal class ReloadingMessage
     {
         public string type = "reloading";
+
+        // Entering Play Mode reloads the domain too; the plugin must not take that for a compilation.
+        public bool playMode;
     }
 
+    // Everything the plugin asks for; each type uses the fields it needs.
     [Serializable]
     internal class CommandMessage
     {
         public string type;
         public string id;
+        public string path;
+        public float value;
+        public int index;
+        public bool save;
     }
 }

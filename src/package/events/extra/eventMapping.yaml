@@ -1,0 +1,18 @@
+# Haptic waveforms for MX Master 4, per event raised by HapticFeedback.cs. Users can change them in Logi Options+.
+haptics:
+  compileSucceeded:
+    DEFAULT: completed
+  compileFailed:
+    DEFAULT: angry_alert
+  playModeEntered:
+    DEFAULT: sharp_state_change
+  playModeExited:
+    DEFAULT: damp_state_change
+  consoleError:
+    DEFAULT: knock
+  testsPassed:
+    DEFAULT: jingle
+  testsFailed:
+    DEFAULT: mad
+  testVibration:
+    DEFAULT: happy_alert

@@ -13,16 +13,17 @@ displayName: Editor Controls for Unity
 
 # Short description of the plugin.
 description: >
-  93 Unity Editor actions with icons for MX Keypad, MX Creative Console and Actions Ring —
-  play mode, scene view, GameObjects, tools, windows, animation, build. Follows the shortcuts
+  103 Unity Editor actions with icons for MX Keypad, MX Creative Console and Actions Ring —
+  play mode, scene view, GameObjects, tools, windows, animation, build, tests. Follows the shortcuts
   you set in Unity (Edit → Shortcuts). Ready-made profiles for every device. With the optional
-  Unity package, keys show live editor state and work while Unity is in the background.
+  Unity package, keys show live editor state and work while Unity is in the background, folders list
+  your scenes, layouts, tools and assets, and MX Master 4 vibrates on compile, Play Mode and test results.
 
 # Name of the plugin library file.
 pluginFileName: UnityEditorControlsPlugin.dll
 
 # Plugin version.
-version: 0.4.0
+version: 0.5.0
 
 # Author of the plugin. The author can be a company or an individual developer.
 author: Valentyn Subbotin
@@ -59,6 +60,9 @@ pluginCapabilities:
 
     # Actions send keyboard shortcuts to Unity.
     - ActivatesApplication
+
+    # Haptic events for MX Master 4 (events/extra/eventMapping.yaml).
+    - HasHapticMapping
 
 # How Options+ recognizes an installed Unity Editor; without this the plugin is missing from "Supported applications".
 # Every Unity 6.x / 202x editor shares the bundle id, wherever Unity Hub put it.

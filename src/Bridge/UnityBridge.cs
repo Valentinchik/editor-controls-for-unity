@@ -26,6 +26,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private static CancellationTokenSource _cancellation;
         private static String _token;
         private static DateTime _reloadingUntilUtc = DateTime.MinValue;
+        private static Boolean _reloadingForPlayMode;
         private static Timer _reloadTimer;
 
         // Raised on connect, disconnect and every state change of any editor; may come from a socket thread.
@@ -40,10 +41,21 @@ namespace Loupedeck.UnityEditorControlsPlugin
                     var active = ActiveSession();
                     if (active?.State != null)
                     {
-                        return new EditorView(active.State, active.Reloading);
+                        return new EditorView(active.State, active.Reloading, active.ReloadingForPlayMode);
                     }
 
-                    return DateTime.UtcNow < _reloadingUntilUtc ? EditorView.ReloadingDomain : EditorView.Disconnected;
+                    return DateTime.UtcNow < _reloadingUntilUtc ? new EditorView(null, true, _reloadingForPlayMode) : EditorView.Disconnected;
+                }
+            }
+        }
+
+        public static EditorCatalog ActiveCatalog
+        {
+            get
+            {
+                lock (Sync)
+                {
+                    return ActiveSession()?.Catalog ?? EditorCatalog.Empty;
                 }
             }
         }
@@ -95,6 +107,18 @@ namespace Loupedeck.UnityEditorControlsPlugin
             return session != null && session.Supports(commandId) && session.Send(new { type = "command", id = commandId });
         }
 
+        // Folder and bridge-only actions: open a scene, run a tool, load a layout, ... in the focused editor.
+        public static Boolean TrySend(Object message)
+        {
+            EditorSession session;
+            lock (Sync)
+            {
+                session = ActiveSession();
+            }
+
+            return session != null && session.Send(message);
+        }
+
         internal static void Register(EditorSession session)
         {
             List<EditorSession> stale;
@@ -122,6 +146,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 if (session.Reloading)
                 {
                     _reloadingUntilUtc = DateTime.UtcNow + ReloadGrace;
+                    _reloadingForPlayMode = session.ReloadingForPlayMode;
                     _reloadTimer?.Dispose();
                     _reloadTimer = new Timer(_ => NotifyChanged(), null, ReloadGrace, Timeout.InfiniteTimeSpan);
                 }

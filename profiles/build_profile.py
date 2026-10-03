@@ -44,6 +44,8 @@ def guid(*parts: str) -> str:
 
 
 def action_name(cls: str) -> str:
+    if cls.endswith("Folder"):  # PluginDynamicFolder classes are referenced through the folder action
+        return f"${PLUGIN}___#DynamicFolder___DynamicFolder#{NAMESPACE}.{cls}"
     return f"${PLUGIN}___{NAMESPACE}.{cls}"
 
 
@@ -55,10 +57,13 @@ def plugin_version() -> str:
 @functools.cache
 def display_names() -> dict:
     names = {}
-    for cs in (SRC / "Actions").glob("*.cs"):
+    for cs in [*(SRC / "Actions").glob("*.cs"), *(SRC / "Folders").glob("*.cs")]:
         text = cs.read_text(encoding="utf-8")
-        names.update(re.findall(r'class (\w+) : \w+\s*\{\s*public \1\(\) : base\("([^"]+)"', text))
+        names.update(re.findall(r'class (\w+) : \w+\s*\{(?:(?!\bclass\b).)*?public \1\(\) : base\("([^"]+)"', text, re.S))
         names.update(re.findall(r'class (\w+) : PluginDynamic\w+(?:(?!\bclass\b).)*?displayName: "([^"]+)"', text, re.S))
+        # TimeScalePresetCommand builds its name from the value: base(0.25f) -> "Time Scale 0.25×".
+        names.update((cls, f"Time Scale {float(value):g}×")
+                     for cls, value in re.findall(r'class (\w+) : TimeScalePresetCommand\s*\{\s*public \1\(\) : base\(([\d.]+)f\)', text))
     return names
 
 

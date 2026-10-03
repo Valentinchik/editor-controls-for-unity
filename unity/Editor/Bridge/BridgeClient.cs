@@ -16,7 +16,7 @@ namespace Valentinchik.EditorControls
     internal static class BridgeClient
     {
         private const int Protocol = 1;
-        private const string PackageVersion = "0.4.0";
+        private const string PackageVersion = "0.5.0";
         private const int RetryMilliseconds = 2000;
         private const string ConnectedOnceKey = "Valentinchik.EditorControls.ConnectedOnce";
 
@@ -33,6 +33,8 @@ namespace Valentinchik.EditorControls
         private static volatile bool _connected;
         private static volatile bool _sendFullState;
         private static string _lastSent;
+        private static string _lastLayout;
+        private static volatile bool _resendLists;
         private static double _nextProbeTime;
 
         static BridgeClient()
@@ -52,6 +54,10 @@ namespace Valentinchik.EditorControls
             EditorApplication.update += Update;
             AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
             EditorApplication.quitting += Stop;
+            EditorBuildSettings.sceneListChanged += () => EditorCatalog.MarkDirty(EditorCatalog.ScenesList);
+            EditorApplication.projectChanged += OnProjectChanged;
+            EditorControlsSettings.Changed += () => EditorCatalog.MarkDirty(EditorCatalog.ToolsList);
+            EditorApplication.focusChanged += focused => EditorCatalog.MarkDirty(EditorCatalog.LayoutsList);
             AppDomain.CurrentDomain.DomainUnload += (_, __) => Stop();
 
             Worker = new Thread(Run) { IsBackground = true, Name = "Editor Controls bridge" };
@@ -106,6 +112,7 @@ namespace Valentinchik.EditorControls
                 writer.WriteLine(JsonUtility.ToJson(Hello));
                 _connected = true;
                 _sendFullState = true;
+                _resendLists = true;
             }
 
             string line;
@@ -135,7 +142,26 @@ namespace Valentinchik.EditorControls
             }
 
             _nextProbeTime = EditorApplication.timeSinceStartup + 0.2;
-            var state = JsonUtility.ToJson(EditorStateProbe.Capture());
+            var probe = EditorStateProbe.Capture();
+            if (probe.layout != _lastLayout)
+            {
+                // Saving a layout makes it the current one, so a new name may mean a new file.
+                _lastLayout = probe.layout;
+                EditorCatalog.MarkDirty(EditorCatalog.LayoutsList);
+            }
+
+            if (_resendLists)
+            {
+                _resendLists = false;
+                EditorCatalog.ResendAll();
+            }
+
+            foreach (var list in EditorCatalog.TakeChanged())
+            {
+                Send(list);
+            }
+
+            var state = JsonUtility.ToJson(probe);
             if (_sendFullState || state != _lastSent)
             {
                 _sendFullState = false;
@@ -147,6 +173,7 @@ namespace Valentinchik.EditorControls
         private static void Handle(string line)
         {
             var header = JsonUtility.FromJson<MessageHeader>(line);
+            var message = header?.type == "welcome" ? null : JsonUtility.FromJson<CommandMessage>(line);
             switch (header?.type)
             {
                 case "welcome":
@@ -157,7 +184,31 @@ namespace Valentinchik.EditorControls
                     }
                     break;
                 case "command":
-                    EditorCommands.Run(JsonUtility.FromJson<CommandMessage>(line).id);
+                    EditorCommands.Run(message.id);
+                    break;
+                case "openScene":
+                    EditorCatalog.OpenScene(message.path);
+                    break;
+                case "runTool":
+                    EditorCatalog.RunTool(message.id);
+                    break;
+                case "listMenus":
+                    Send(EditorCatalog.Menus());
+                    break;
+                case "loadLayout":
+                    WindowLayouts.Load(message.path);
+                    break;
+                case "openAsset":
+                    AssetShortcuts.Open(message.id);
+                    break;
+                case "bookmark":
+                    CameraBookmarks.Use(message.index, message.save);
+                    break;
+                case "timeScale":
+                    TimeScale.Set(message.value);
+                    break;
+                case "timeScaleStep":
+                    TimeScale.Step(message.index);
                     break;
             }
         }
@@ -177,10 +228,19 @@ namespace Valentinchik.EditorControls
             }
         }
 
+        private static void OnProjectChanged()
+        {
+            // Assets were added, moved or renamed: scene names, tools and asset labels may be stale.
+            EditorCatalog.MarkDirty(EditorCatalog.ScenesList);
+            EditorCatalog.MarkDirty(EditorCatalog.ToolsList);
+            EditorCatalog.MarkDirty(EditorCatalog.RecentList);
+            EditorCatalog.MarkDirty(EditorCatalog.FavoritesList);
+        }
+
         private static void OnBeforeAssemblyReload()
         {
             // Lets the plugin show "compiling" instead of "disconnected" while the domain reloads.
-            Send(JsonUtility.ToJson(new ReloadingMessage()));
+            Send(JsonUtility.ToJson(new ReloadingMessage { playMode = EditorApplication.isPlayingOrWillChangePlaymode }));
             Stop();
         }
 

@@ -98,6 +98,13 @@ namespace Valentinchik.EditorControls
             AddMenu("Main Menu/File/Build And Run", "File/Build And Run");
             Add("Main Menu/Edit/Lighting/Generate Lighting", () => Lightmapping.BakeAsync());
             Add("Profiling/Profiler/RecordToggle", () => { ProfilerDriver.enabled = !ProfilerDriver.enabled; return true; });
+
+            // Bridge-only actions (no Unity shortcut behind them); listed only when this editor can run them.
+            if (TestRuns.Available)
+            {
+                Add(TestRuns.RunEditModeCommand, () => { TestRuns.Run(false); return true; });
+                Add(TestRuns.RunPlayModeCommand, () => { TestRuns.Run(true); return true; });
+            }
         }
 
         public static string[] SupportedIds() => Commands.Keys.ToArray();

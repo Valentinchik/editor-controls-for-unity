@@ -37,9 +37,17 @@
     {
       "name": "Project",
       "keys": [
-        "LockViewCommand", "Toggle2DCommand", "RefreshCommand",
+        "ScenesFolder", "ProjectToolsFolder", "RefreshCommand",
         "BuildProfilesCommand", "BuildAndRunCommand", "SearchCommand",
-        "ProfilerRecordCommand", "GenerateLightingCommand", "UndoHistoryWindowCommand"
+        "LockViewCommand", "Toggle2DCommand", "ProfilerRecordCommand"
+      ]
+    },
+    {
+      "name": "Workflow",
+      "keys": [
+        "TimeScaleSlowerCommand", "TimeScaleNormalCommand", "TimeScaleFasterCommand",
+        "RunEditModeTestsCommand", "RunPlayModeTestsCommand", "LayoutsFolder",
+        "CameraBookmarksFolder", "RecentAssetsFolder", "FavoritesFolder"
       ]
     }
   ]
