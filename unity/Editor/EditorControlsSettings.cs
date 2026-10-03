@@ -9,7 +9,8 @@ namespace Valentinchik.EditorControls
     // Preferences → Editor Controls for Unity. Stored per project in EditorPrefs (personal, not committed).
     internal static class EditorControlsSettings
     {
-        private const string DefaultMenuRoots = "Tools";
+        // Empty: the Project Tools folder lists only [EditorControlsAction] methods unless the user opts menus in.
+        private const string DefaultMenuRoots = "";
 
         public static event Action Changed;
 
@@ -17,7 +18,7 @@ namespace Valentinchik.EditorControls
         private static string OnlySelectedTestsKey => "Valentinchik.EditorControls.OnlySelectedTests." + PlayerSettings.productGUID;
         private static string TestAssembliesKey => "Valentinchik.EditorControls.TestAssemblies." + PlayerSettings.productGUID;
 
-        // Top-level menus whose items appear in the Project Tools folder.
+        // Top-level menus whose items also appear in the Project Tools folder (none by default).
         public static IReadOnlyList<string> MenuRoots => Lines(EditorPrefs.GetString(MenuRootsKey, DefaultMenuRoots))
             .Select(root => root.Trim('/'))
             .Where(root => root.Length > 0)
@@ -54,8 +55,9 @@ namespace Valentinchik.EditorControls
         {
             EditorGUILayout.LabelField("Project Tools folder", EditorStyles.boldLabel);
             EditorGUILayout.HelpBox(
-                "Menu items under these top-level menus appear in the Project Tools folder of the Logi Options+ plugin, " +
-                "together with methods marked [EditorControlsAction]. One menu per line, e.g. \"Tools\" or \"MyGame\".",
+                "The Project Tools folder of the Logi Options+ plugin lists methods marked [EditorControlsAction]. " +
+                "To add menu items too, list their top-level menus here, one per line (e.g. \"MyGame\"); leave it empty " +
+                "for your marked methods only. Any single menu item can also go on a key with the Run Menu Item action.",
                 MessageType.None);
 
             // The raw text, not the parsed list: re-joining the list would swallow a newline the moment it is typed.

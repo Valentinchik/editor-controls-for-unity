@@ -103,22 +103,25 @@ and accepts connections from the plugin alone (a per-session token stored in a f
 
 ### Project Tools
 
-The *Project Tools* folder lists your own editor tools:
+The *Project Tools* folder lists only the static parameterless methods you mark with `[EditorControlsAction]` — your
+own tools and cheats, without the menus that plugins and other packages add:
 
-- static parameterless methods marked with `[EditorControlsAction]`:
+```csharp
+using Valentinchik.EditorControls;
 
-  ```csharp
-  using Valentinchik.EditorControls;
+public static class MyTools
+{
+    // Icon: any Tabler icon name the plugin ships. Order: position in the folder (then by label).
+    [EditorControlsAction("Rebuild Atlas", Icon = "photo", Order = 1)]
+    private static void RebuildAtlas() { /* ... */ }
+}
+```
 
-  public static class MyTools
-  {
-      [EditorControlsAction("Rebuild Atlas", Icon = "photo")] // Icon: any Tabler icon name the plugin ships
-      private static void RebuildAtlas() { /* ... */ }
-  }
-  ```
+The attribute is editor-only. Put such methods in an `Editor` folder, or — for cheats next to game code — wrap the
+attribute (and its `using`) in `#if UNITY_EDITOR`, so player builds compile without the package.
 
-- menu items under the top-level menus listed in *Preferences → Editor Controls for Unity* (`Tools` by default;
-  add your own, e.g. `MyGame`). The list is stored per project in EditorPrefs.
+To list whole menus as well, add their top-level names in *Preferences → Editor Controls for Unity* (empty by
+default; stored per project in EditorPrefs). Any single menu item can also go on a key with *Run Menu Item*.
 
 ### Test keys
 

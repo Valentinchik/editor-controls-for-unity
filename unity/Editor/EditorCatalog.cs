@@ -135,7 +135,7 @@ namespace Valentinchik.EditorControls
         private static ListItem[] Tools()
         {
             Methods.Clear();
-            var tools = new List<ListItem>();
+            var actions = new List<(int Order, ListItem Item)>();
 
             foreach (var method in TypeCache.GetMethodsWithAttribute<EditorControlsActionAttribute>())
             {
@@ -147,8 +147,14 @@ namespace Valentinchik.EditorControls
                 var attribute = method.GetCustomAttribute<EditorControlsActionAttribute>();
                 var id = $"{MethodPrefix}{method.DeclaringType?.FullName}.{method.Name}";
                 Methods[id] = method;
-                tools.Add(new ListItem { id = id, label = attribute.Label ?? ObjectNames.NicifyVariableName(method.Name), icon = attribute.Icon });
+                actions.Add((attribute.Order, new ListItem { id = id, label = attribute.Label ?? ObjectNames.NicifyVariableName(method.Name), icon = attribute.Icon }));
             }
+
+            var tools = actions
+                .OrderBy(action => action.Order)
+                .ThenBy(action => action.Item.label, StringComparer.OrdinalIgnoreCase)
+                .Select(action => action.Item)
+                .ToList();
 
             var roots = EditorControlsSettings.MenuRoots;
             var menuPaths = TypeCache.GetMethodsWithAttribute<MenuItem>()

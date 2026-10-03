@@ -16,7 +16,7 @@ namespace Valentinchik.EditorControls
     internal static class BridgeClient
     {
         private const int Protocol = 1;
-        private const string PackageVersion = "0.5.2";
+        private const string PackageVersion = "0.5.3";
         private const int RetryMilliseconds = 2000;
         private const string ConnectedOnceKey = "Valentinchik.EditorControls.ConnectedOnce";
 

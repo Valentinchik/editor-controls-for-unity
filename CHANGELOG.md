@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.3 — 2026-10-03
+
+- *Project Tools* now lists only methods marked `[EditorControlsAction]`; menus from plugins and packages no longer
+  crowd it. Menus can still be added by top-level name in Preferences (empty by default).
+- `[EditorControlsAction(Order = …)]` sets an item's position in the folder.
+
 ## 0.5.2 — 2026-10-03
 
 - *Reload Domain*: reloads scripts without recompiling.
