@@ -35,7 +35,8 @@ With the [Unity package](#unity-package):
 - **Time scale** in Play Mode: 0.25× / 1× / 2× keys, *Slow Down* / *Speed Up* along
   0.05 · 0.1 · 0.25 · 0.5 · 0.75 · 1 · 1.5 · 2 · 4 · 8, and a dial (press to reset). The keys show the current value.
 - **Tests:** *Run EditMode Tests* and *Run PlayMode Tests* show progress while running, then `passed / total` in green
-  or red for two seconds. Needs the Unity Test Framework package.
+  or red for two seconds. Needs the Unity Test Framework package. To leave out tests that come with plugins, pick the
+  assemblies the keys run in *Preferences → Editor Controls for Unity*.
 - **Run Menu Item:** a configurable action — pick any Unity menu item from a list in the action's settings in Options+.
 - **Haptics on MX Master 4:** compilation succeeded / failed, Play Mode entered / exited, a new console error, tests
   passed / failed. Each event has its own waveform, changeable in Options+; *Test Vibration* (Status group) checks
@@ -81,14 +82,17 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.0
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.1
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.0"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.1"
 ```
+
+With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard
+shortcuts if it does not. While Unity is in the background, they control the project you used last.
 
 When the editor connects, the Unity console shows *[Editor Controls] Connected to Logi Options+* and the plugin's
 status in Options+ reads *Connected to Unity: &lt;project&gt;*. The package runs only a fixed set of editor commands
@@ -112,6 +116,13 @@ The *Project Tools* folder lists your own editor tools:
 
 - menu items under the top-level menus listed in *Preferences → Editor Controls for Unity* (`Tools` by default;
   add your own, e.g. `MyGame`). The list is stored per project in EditorPrefs.
+
+### Test keys
+
+*Run EditMode Tests* / *Run PlayMode Tests* run every test of that mode, including tests bundled with plugins
+(Zenject alone brings several hundred). In *Preferences → Editor Controls for Unity → Run Tests keys*, turn on
+*Run only the selected test assemblies* and tick the assemblies with your own tests. Runs started from the Test Runner
+window show on the keys as well.
 
 ### Favorites, recent assets and camera bookmarks
 

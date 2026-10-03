@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 #if EDITOR_CONTROLS_TEST_FRAMEWORK
@@ -22,6 +25,9 @@ namespace Valentinchik.EditorControls
         public static TestRunState EditMode => Load(EditModeKey);
 
         public static TestRunState PlayMode => Load(PlayModeKey);
+
+        // Test assemblies found by the last RefreshAssemblies(), for the Preferences page.
+        public static IReadOnlyList<TestAssembly> Assemblies { get; private set; } = Array.Empty<TestAssembly>();
 
 #if EDITOR_CONTROLS_TEST_FRAMEWORK
         public static bool Available => true;
@@ -56,9 +62,56 @@ namespace Valentinchik.EditorControls
                 return;
             }
 
+            var filter = new Filter { testMode = playMode ? TestMode.PlayMode : TestMode.EditMode };
+            if (EditorControlsSettings.OnlySelectedTestAssemblies)
+            {
+                // An empty assemblyNames would mean "every assembly" to the Test Framework.
+                var selected = EditorControlsSettings.TestAssemblies;
+                if (selected.Count == 0)
+                {
+                    Debug.LogWarning("[Editor Controls] No test assemblies are selected in Preferences → Editor Controls for Unity.");
+                    return;
+                }
+
+                filter.assemblyNames = selected.ToArray();
+            }
+
             SessionState.SetString(RequestedRunKey, playMode ? PlayModeKey : EditModeKey);
-            Api.Execute(new ExecutionSettings(new Filter { testMode = playMode ? TestMode.PlayMode : TestMode.EditMode }));
+            Api.Execute(new ExecutionSettings(filter));
         }
+
+        public static void RefreshAssemblies(Action done)
+        {
+            var found = new List<TestAssembly>();
+            var pending = 2;
+
+            void Collect(ITestAdaptor root, bool playMode)
+            {
+                found.AddRange(AssembliesUnder(root).Select(assembly => new TestAssembly(NameOf(assembly), playMode, assembly.TestCaseCount)));
+                if (--pending == 0)
+                {
+                    Assemblies = found.OrderBy(a => a.PlayMode).ThenBy(a => a.Name, StringComparer.OrdinalIgnoreCase).ToList();
+                    done?.Invoke();
+                }
+            }
+
+            Api.RetrieveTestList(TestMode.EditMode, root => Collect(root, false));
+            Api.RetrieveTestList(TestMode.PlayMode, root => Collect(root, true));
+        }
+
+        private static IEnumerable<ITestAdaptor> AssembliesUnder(ITestAdaptor test)
+        {
+            if (test == null)
+            {
+                return Enumerable.Empty<ITestAdaptor>();
+            }
+
+            return test.IsTestAssembly ? new[] { test } : test.Children.SelectMany(AssembliesUnder);
+        }
+
+        // The tree names assemblies "Name.dll"; the run filter wants the bare assembly name.
+        private static string NameOf(ITestAdaptor assembly) =>
+            assembly.Name.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) ? assembly.Name.Substring(0, assembly.Name.Length - 4) : assembly.Name;
 
         private static void ClearStaleRun(string key)
         {
@@ -161,6 +214,10 @@ namespace Valentinchik.EditorControls
         public static void Run(bool playMode)
         {
         }
+
+        public static void RefreshAssemblies(Action done)
+        {
+        }
 #endif
 
         private static TestRunState Load(string key)
@@ -170,5 +227,19 @@ namespace Valentinchik.EditorControls
         }
 
         private static void Store(string key, TestRunState state) => SessionState.SetString(key, JsonUtility.ToJson(state));
+    }
+
+    internal sealed class TestAssembly
+    {
+        public TestAssembly(string name, bool playMode, int tests)
+        {
+            Name = name;
+            PlayMode = playMode;
+            Tests = tests;
+        }
+
+        public string Name { get; }
+        public bool PlayMode { get; }
+        public int Tests { get; }
     }
 }

@@ -9,6 +9,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private static readonly TimeSpan PackageHintDelay = TimeSpan.FromSeconds(20);
 
         private Timer _statusTimer;
+        private Timer _frontTimer;
         private HapticFeedback _haptics;
         private DateTime? _unityWithoutPackageSinceUtc;
         private String _lastStatus;
@@ -30,13 +31,15 @@ namespace Loupedeck.UnityEditorControlsPlugin
             this._haptics.Register();
             UnityBridge.Changed += this._haptics.OnEditorChanged;
             UnityBridge.Changed += this.UpdateStatus;
-            UnityBridge.Start();
+            UnityBridge.Start(() => this.ClientApplication.IsActive());
             this._statusTimer = new Timer(_ => this.UpdateStatus(), null, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
+            this._frontTimer = new Timer(_ => UnityBridge.CheckFrontApplication(), null, TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(500));
         }
 
         public override void Unload()
         {
             this._statusTimer?.Dispose();
+            this._frontTimer?.Dispose();
             UnityBridge.Changed -= this.UpdateStatus;
             UnityBridge.Changed -= this._haptics.OnEditorChanged;
             UnityBridge.Stop();

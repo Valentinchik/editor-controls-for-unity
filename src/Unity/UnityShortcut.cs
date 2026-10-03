@@ -62,6 +62,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 return;
             }
 
+            PluginLog.Verbose($"'{this.Id}' → keystroke {resolved}");
             application.SendKeyboardShortcut(key, resolved.ToModifierKey());
         }
     }

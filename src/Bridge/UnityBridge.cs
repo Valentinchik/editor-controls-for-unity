@@ -12,7 +12,9 @@ namespace Loupedeck.UnityEditorControlsPlugin
     using System.Threading.Tasks;
 
     // Loopback server for the Unity package com.valentinchik.editor-controls. The plugin is the server so that it
-    // survives Unity's domain reloads; each open editor connects as a client, and commands go to the one focused last.
+    // survives Unity's domain reloads; each open editor connects as a client.
+    // Which editor a key acts on: the one in front if it runs the package; none if the editor in front does not (the key
+    // falls back to a keystroke, which reaches that window); the one focused last while Unity is in the background.
     // Wire format: one JSON object per line. Address and token are published in an endpoint file only this user can read.
     internal static class UnityBridge
     {
@@ -27,7 +29,10 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private static String _token;
         private static DateTime _reloadingUntilUtc = DateTime.MinValue;
         private static Boolean _reloadingForPlayMode;
+        private static Boolean _reloadingWasFocused;
         private static Timer _reloadTimer;
+        private static Func<Boolean> _unityInFront = () => false;
+        private static Boolean _lastUnityInFront;
 
         // Raised on connect, disconnect and every state change of any editor; may come from a socket thread.
         public static event Action Changed;
@@ -38,13 +43,15 @@ namespace Loupedeck.UnityEditorControlsPlugin
             {
                 lock (Sync)
                 {
-                    var active = ActiveSession();
-                    if (active?.State != null)
+                    var target = Target();
+                    if (target?.State != null)
                     {
-                        return new EditorView(active.State, active.Reloading, active.ReloadingForPlayMode);
+                        return new EditorView(target.State, target.Reloading, target.ReloadingForPlayMode);
                     }
 
-                    return DateTime.UtcNow < _reloadingUntilUtc ? new EditorView(null, true, _reloadingForPlayMode) : EditorView.Disconnected;
+                    // Mid domain reload the editor has no session; it counts as the target if it was the one in front.
+                    var reloading = DateTime.UtcNow < _reloadingUntilUtc && (_reloadingWasFocused || !UnityInFront());
+                    return reloading ? new EditorView(null, true, _reloadingForPlayMode) : EditorView.Disconnected;
                 }
             }
         }
@@ -55,7 +62,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
             {
                 lock (Sync)
                 {
-                    return ActiveSession()?.Catalog ?? EditorCatalog.Empty;
+                    return Target()?.Catalog ?? EditorCatalog.Empty;
                 }
             }
         }
@@ -66,13 +73,41 @@ namespace Loupedeck.UnityEditorControlsPlugin
             {
                 lock (Sync)
                 {
-                    return ActiveSession()?.Project;
+                    return Target()?.Project;
                 }
             }
         }
 
-        public static void Start()
+        // The process id of the editor keys act on, or null (see the class comment).
+        public static Int32? TargetPid
         {
+            get
+            {
+                lock (Sync)
+                {
+                    return Target()?.Pid;
+                }
+            }
+        }
+
+        // Every connected editor, for haptics: each one's transitions are followed separately.
+        public static IReadOnlyList<EditorSnapshot> Editors
+        {
+            get
+            {
+                lock (Sync)
+                {
+                    return Sessions.Where(s => s.State != null)
+                        .Select(s => new EditorSnapshot(s.Pid, s.State, s.Reloading && !s.ReloadingForPlayMode))
+                        .ToList();
+                }
+            }
+        }
+
+        // unityInFront: whether a Unity Editor is the frontmost app (Options+ knows the app, not which project).
+        public static void Start(Func<Boolean> unityInFront)
+        {
+            _unityInFront = unityInFront;
             _token = Convert.ToHexString(RandomNumberGenerator.GetBytes(16));
             _cancellation = new CancellationTokenSource();
             _listener = Listen();
@@ -95,25 +130,43 @@ namespace Loupedeck.UnityEditorControlsPlugin
             }
         }
 
-        // True when the focused editor runs the Unity package and handles this command itself.
+        // Switching between Unity and another app raises no editor event but can change the target; polled on a timer.
+        public static void CheckFrontApplication()
+        {
+            var inFront = UnityInFront();
+            if (inFront != _lastUnityInFront)
+            {
+                _lastUnityInFront = inFront;
+                NotifyChanged();
+            }
+        }
+
+        // True when the target editor runs the Unity package and handles this command itself;
+        // false sends the key as a keystroke instead.
         public static Boolean TrySend(String commandId)
         {
             EditorSession session;
             lock (Sync)
             {
-                session = ActiveSession();
+                session = Target();
             }
 
-            return session != null && session.Supports(commandId) && session.Send(new { type = "command", id = commandId });
+            if (session == null || !session.Supports(commandId) || !session.Send(new { type = "command", id = commandId }))
+            {
+                return false;
+            }
+
+            PluginLog.Verbose($"'{commandId}' → {session.Project}");
+            return true;
         }
 
-        // Folder and bridge-only actions: open a scene, run a tool, load a layout, ... in the focused editor.
+        // Folder and bridge-only actions: open a scene, run a tool, load a layout, ... in the target editor.
         public static Boolean TrySend(Object message)
         {
             EditorSession session;
             lock (Sync)
             {
-                session = ActiveSession();
+                session = Target();
             }
 
             return session != null && session.Send(message);
@@ -147,6 +200,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 {
                     _reloadingUntilUtc = DateTime.UtcNow + ReloadGrace;
                     _reloadingForPlayMode = session.ReloadingForPlayMode;
+                    _reloadingWasFocused = session.State?.Focused == true;
                     _reloadTimer?.Dispose();
                     _reloadTimer = new Timer(_ => NotifyChanged(), null, ReloadGrace, Timeout.InfiniteTimeSpan);
                 }
@@ -168,7 +222,28 @@ namespace Loupedeck.UnityEditorControlsPlugin
             }
         }
 
-        private static EditorSession ActiveSession() => Sessions.OrderByDescending(s => s.LastFocusedUtc).FirstOrDefault();
+        private static EditorSession Target()
+        {
+            var inFront = Sessions.Where(s => s.State?.Focused == true).OrderByDescending(s => s.LastFocusedUtc).FirstOrDefault();
+            if (inFront != null)
+            {
+                return inFront;
+            }
+
+            return UnityInFront() ? null : Sessions.OrderByDescending(s => s.LastFocusedUtc).FirstOrDefault();
+        }
+
+        private static Boolean UnityInFront()
+        {
+            try
+            {
+                return _unityInFront();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         private static TcpListener Listen()
         {
@@ -222,4 +297,12 @@ namespace Loupedeck.UnityEditorControlsPlugin
             ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "EditorControlsForUnity", "bridge.json")
             : Path.Combine(Environment.GetEnvironmentVariable("HOME") ?? "", "Library", "Application Support", "EditorControlsForUnity", "bridge.json");
     }
+}
+
+namespace Loupedeck.UnityEditorControlsPlugin
+{
+    using System;
+
+    // One connected editor as haptics see it. CompileReload: the domain is reloading with freshly compiled code.
+    public sealed record EditorSnapshot(Int32 Pid, EditorState State, Boolean CompileReload);
 }

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.1 — 2026-10-03
+
+- Test keys can run only selected test assemblies (*Preferences → Editor Controls for Unity → Run Tests keys*), so
+  tests bundled with plugins such as Zenject stay out of the run.
+- The Project Tools menu list in Preferences accepts new lines again (Enter was swallowed while typing).
+- Several Unity projects open: keys act on the project in front. A project without the Unity package in front gets
+  keyboard shortcuts again instead of commands going to another project that has the package; with Unity in the
+  background, keys still control the project used last. Live keys and folders follow the same project.
+- Haptics follow each open project separately, so switching projects no longer fakes Play Mode or error events.
+
 ## 0.5.0 — 2026-10-03
 
 - Haptic feedback on MX Master 4: compilation succeeded / failed, Play Mode entered / exited, new console error,

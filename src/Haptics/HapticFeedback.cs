@@ -1,6 +1,7 @@
 namespace Loupedeck.UnityEditorControlsPlugin
 {
     using System;
+    using System.Collections.Generic;
 
     // Haptic events for MX Master 4. Waveforms are mapped in package/events/extra/eventMapping.yaml and can be
     // changed by the user in Options+. Events come from transitions in the editor state reported by the Unity package.
@@ -19,8 +20,10 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         private readonly Plugin _plugin;
         private readonly Object _sync = new();
-        private EditorView _previousView = EditorView.Disconnected;
-        private EditorState _lastState;
+
+        // Last state per editor process. Kept while an editor reloads its domain (no session then), so the compile
+        // result after the reload and Play Mode entered through a reload are still caught.
+        private readonly Dictionary<Int32, Seen> _seen = new();
         private DateTime _lastErrorUtc = DateTime.MinValue;
 
         public HapticFeedback(Plugin plugin)
@@ -43,64 +46,67 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         public void Raise(String eventName) => this._plugin.PluginEvents.RaiseEvent(eventName);
 
-        // Called on every bridge change. Compilation is judged view to view; everything else against the last state
-        // seen while connected, so transitions across a domain reload (Play Mode, PlayMode tests) are not missed.
+        // Called on every bridge change. Each editor is compared with its own previous state, so switching between
+        // projects is not mistaken for a transition. Compilation and test results come from any open editor (you
+        // switch away while waiting for them); Play Mode and console errors only from the editor the keys act on.
         public void OnEditorChanged()
         {
-            EditorView previousView, view = UnityBridge.View;
-            EditorState last;
+            var editors = UnityBridge.Editors;
+            var target = UnityBridge.TargetPid;
+            var events = new List<String>();
+
             lock (this._sync)
             {
-                previousView = this._previousView;
-                last = this._lastState;
-                this._previousView = view;
-                if (view.Connected)
+                foreach (var editor in editors)
                 {
-                    this._lastState = view.State;
+                    var now = editor.State;
+                    var compiling = editor.CompileReload || now.Compiling;
+                    this._seen.TryGetValue(editor.Pid, out var before);
+                    this._seen[editor.Pid] = new Seen(now, compiling);
+                    if (before == null || (ReferenceEquals(before.State, now) && before.Compiling == compiling))
+                    {
+                        continue;
+                    }
+
+                    if (before.Compiling && !compiling)
+                    {
+                        events.Add(now.CompileFailed ? CompileFailed : CompileSucceeded);
+                        continue; // compile errors also land in the console — one buzz is enough
+                    }
+
+                    AddIfFinished(events, before.State.EditModeTests, now.EditModeTests);
+                    AddIfFinished(events, before.State.PlayModeTests, now.PlayModeTests);
+
+                    if (editor.Pid != target)
+                    {
+                        continue;
+                    }
+
+                    // PlayMode tests enter and leave Play Mode on their own; the result buzz is the one that matters.
+                    if (!before.State.TestsRunning && !now.TestsRunning && before.State.Playing != now.Playing)
+                    {
+                        events.Add(now.Playing ? PlayModeEntered : PlayModeExited);
+                    }
+
+                    if (now.Errors > before.State.Errors && !now.TestsRunning && DateTime.UtcNow - this._lastErrorUtc > ErrorCooldown)
+                    {
+                        this._lastErrorUtc = DateTime.UtcNow;
+                        events.Add(ConsoleError);
+                    }
                 }
             }
 
-            if (previousView.Compiling && !view.Compiling && view.Connected)
-            {
-                this.Raise(view.State.CompileFailed ? CompileFailed : CompileSucceeded);
-                return; // compile errors also land in the console — one buzz is enough
-            }
-
-            if (!view.Connected || last == null || ReferenceEquals(last, view.State))
-            {
-                return;
-            }
-
-            var now = view.State;
-            this.RaiseIfFinished(last.EditModeTests, now.EditModeTests);
-            this.RaiseIfFinished(last.PlayModeTests, now.PlayModeTests);
-
-            // PlayMode tests enter and leave Play Mode on their own; the result buzz is the one that matters.
-            if (!last.TestsRunning && !now.TestsRunning)
-            {
-                if (!last.Playing && now.Playing)
-                {
-                    this.Raise(PlayModeEntered);
-                }
-                else if (last.Playing && !now.Playing)
-                {
-                    this.Raise(PlayModeExited);
-                }
-            }
-
-            if (now.Errors > last.Errors && !now.TestsRunning && DateTime.UtcNow - this._lastErrorUtc > ErrorCooldown)
-            {
-                this._lastErrorUtc = DateTime.UtcNow;
-                this.Raise(ConsoleError);
-            }
+            events.ForEach(this.Raise);
         }
 
-        private void RaiseIfFinished(TestRun before, TestRun after)
+        private static void AddIfFinished(List<String> events, TestRun before, TestRun after)
         {
             if (after.Finished && after.Runs > before.Runs)
             {
-                this.Raise(after.Failed > 0 ? TestsFailed : TestsPassed);
+                events.Add(after.Failed > 0 ? TestsFailed : TestsPassed);
             }
         }
+
+        private sealed record Seen(EditorState State, Boolean Compiling);
     }
 }

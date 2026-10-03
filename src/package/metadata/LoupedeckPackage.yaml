@@ -23,7 +23,7 @@ description: >
 pluginFileName: UnityEditorControlsPlugin.dll
 
 # Plugin version.
-version: 0.5.0
+version: 0.5.1
 
 # Author of the plugin. The author can be a company or an individual developer.
 author: Valentyn Subbotin

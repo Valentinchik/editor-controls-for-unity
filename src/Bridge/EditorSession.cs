@@ -131,6 +131,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 case "reloading":
                     this.Reloading = true;
                     this.ReloadingForPlayMode = message.TryGetProperty("playMode", out var playMode) && playMode.GetBoolean();
+                    UnityBridge.NotifyChanged(); // a compile that finished between two state updates still gets its buzz
                     break;
                 case "list":
                     var (name, items) = EditorCatalog.ParseList(message);

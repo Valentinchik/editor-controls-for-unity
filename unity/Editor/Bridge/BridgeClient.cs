@@ -16,7 +16,7 @@ namespace Valentinchik.EditorControls
     internal static class BridgeClient
     {
         private const int Protocol = 1;
-        private const string PackageVersion = "0.5.0";
+        private const string PackageVersion = "0.5.1";
         private const int RetryMilliseconds = 2000;
         private const string ConnectedOnceKey = "Valentinchik.EditorControls.ConnectedOnce";
 
@@ -57,7 +57,7 @@ namespace Valentinchik.EditorControls
             EditorBuildSettings.sceneListChanged += () => EditorCatalog.MarkDirty(EditorCatalog.ScenesList);
             EditorApplication.projectChanged += OnProjectChanged;
             EditorControlsSettings.Changed += () => EditorCatalog.MarkDirty(EditorCatalog.ToolsList);
-            EditorApplication.focusChanged += focused => EditorCatalog.MarkDirty(EditorCatalog.LayoutsList);
+            EditorApplication.focusChanged += OnFocusChanged;
             AppDomain.CurrentDomain.DomainUnload += (_, __) => Stop();
 
             Worker = new Thread(Run) { IsBackground = true, Name = "Editor Controls bridge" };
@@ -136,13 +136,32 @@ namespace Valentinchik.EditorControls
                 Handle(line);
             }
 
-            if (!_connected || EditorApplication.timeSinceStartup < _nextProbeTime)
+            if (_connected && EditorApplication.timeSinceStartup >= _nextProbeTime)
             {
-                return;
+                Probe(null);
             }
+        }
 
+        // The plugin sends keys to the editor that says it is in front, so focus changes go out at once rather than
+        // on the next tick — a background editor ticks rarely. The new value comes from the event itself.
+        private static void OnFocusChanged(bool focused)
+        {
+            EditorCatalog.MarkDirty(EditorCatalog.LayoutsList);
+            if (_connected)
+            {
+                Probe(focused);
+            }
+        }
+
+        private static void Probe(bool? focusedNow)
+        {
             _nextProbeTime = EditorApplication.timeSinceStartup + 0.2;
             var probe = EditorStateProbe.Capture();
+            if (focusedNow.HasValue)
+            {
+                probe.focused = focusedNow.Value;
+            }
+
             if (probe.layout != _lastLayout)
             {
                 // Saving a layout makes it the current one, so a new name may mean a new file.
