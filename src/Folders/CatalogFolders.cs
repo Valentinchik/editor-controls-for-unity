@@ -2,6 +2,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     // Scenes in Build Profiles first, then the rest of the project; the open scene is highlighted.
     public sealed class ScenesFolder : UnityCatalogFolder
@@ -23,18 +24,80 @@ namespace Loupedeck.UnityEditorControlsPlugin
         }
     }
 
-    // Methods marked [EditorControlsAction] and menu items under the roots set in Preferences → Editor Controls for Unity.
+    // Methods marked [EditorControlsAction] (plus menus listed in the package's Preferences). Groups come first as
+    // subfolders, then tools without a group; inside a group the first button goes back up.
     public sealed class ProjectToolsFolder : UnityCatalogFolder
     {
+        private const String GroupPrefix = "group:";
+        private const String UpId = "up";
+
+        private String _group;
+        private IReadOnlyList<CatalogItem> _source;
+        private String _sourceGroup;
+        private IReadOnlyList<CatalogItem> _view = Array.Empty<CatalogItem>();
+
         public ProjectToolsFolder() : base("Project Tools") { }
 
         protected override String ItemIcon => "hammer";
 
         protected override String EmptyLabel => "No tools";
 
-        protected override IReadOnlyList<CatalogItem> ItemsOf(EditorCatalog catalog) => catalog.Get(EditorCatalog.Tools);
+        public override Boolean Deactivate()
+        {
+            this._group = null;
+            return base.Deactivate();
+        }
 
-        protected override void Run(CatalogItem item) => UnityBridge.TrySend(new { type = "runTool", id = item.Id });
+        // Cached per source list and open group: the base class tells "changed" by reference.
+        protected override IReadOnlyList<CatalogItem> ItemsOf(EditorCatalog catalog)
+        {
+            var tools = catalog.Get(EditorCatalog.Tools);
+            if (this._group != null && !tools.Any(tool => tool.Group == this._group))
+            {
+                this._group = null; // the group is gone (renamed, or another project in front)
+            }
+
+            if (ReferenceEquals(tools, this._source) && this._group == this._sourceGroup)
+            {
+                return this._view;
+            }
+
+            this._source = tools;
+            this._sourceGroup = this._group;
+            this._view = this._group == null
+                ? tools.Where(tool => tool.Group != null)
+                    .Select(tool => tool.Group)
+                    .Distinct()
+                    .Select(group => new CatalogItem(GroupPrefix + group, group, "folder"))
+                    .Concat(tools.Where(tool => tool.Group == null))
+                    .ToList()
+                : new[] { new CatalogItem(UpId, "‹ " + this._group, "folder-open") }
+                    .Concat(tools.Where(tool => tool.Group == this._group))
+                    .ToList();
+            return this._view;
+        }
+
+        protected override void Run(CatalogItem item)
+        {
+            if (item.Id == UpId)
+            {
+                this.OpenGroup(null);
+            }
+            else if (item.Id.StartsWith(GroupPrefix, StringComparison.Ordinal))
+            {
+                this.OpenGroup(item.Id.Substring(GroupPrefix.Length));
+            }
+            else
+            {
+                UnityBridge.TrySend(new { type = "runTool", id = item.Id });
+            }
+        }
+
+        private void OpenGroup(String group)
+        {
+            this._group = group;
+            this.ItemsChanged();
+        }
     }
 
     // Window → Layouts: Unity's layouts and the user's saved ones; the loaded one is highlighted.

@@ -1,7 +1,7 @@
 # Editor Controls for Unity
 
 A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials and Actions Ring:
-**105 ready-made actions with icons**, **6 dynamic folders** and **default profiles for every device**, so there is
+**106 ready-made actions with icons**, **6 dynamic folders** and **default profiles for every device**, so there is
 nothing to set up by hand. Add the optional [Unity package](#unity-package) and the keys show live editor state,
 folders fill with your project's scenes, layouts and assets, and an MX Master 4 vibrates when the editor needs you.
 
@@ -9,7 +9,7 @@ folders fill with your project's scenes, layouts and assets, and an MX Master 4 
 
 ## Features
 
-- **105 actions** in 14 groups — Play Mode, Status, Tests, Scene View, Grid & Snap, GameObject, Selection, Tools,
+- **106 actions** in 14 groups — Play Mode, Status, Tests, Scene View, Grid & Snap, GameObject, Selection, Tools,
   Windows, Edit, Project, Animation, Folders, and 9 dial actions (Undo / Redo, tool switching, time scale, animation
   frames and keys, selection history, grid size, list navigation, frame-by-frame stepping).
 - **Follows your Unity shortcuts.** If you rebound a command in Unity (*Edit → Shortcuts*), the plugin sends your
@@ -28,7 +28,7 @@ With the [Unity package](#unity-package):
   Profiler Record, the selected object's active / hidden / pickable state) show their current state, *Compile* shows
   compiling / done / failed and *Errors* counts console errors. Actions run even while Unity is in the background.
 - **Dynamic folders** that fill from the open project:
-  *Scenes* (the open one highlighted), *Project Tools* (your own editor tools — see below), *Layouts* (Unity's and
+  *Scenes* (the open one highlighted), *Project Tools* (your own tools and cheats, in groups — see below), *Layouts* (Unity's and
   your saved window layouts), *Camera Bookmarks* (7 saved Scene View cameras per scene — an empty slot saves the
   view, a filled one flies back to it), *Recent Assets* and *Favorites* (prefabs open in Prefab Mode, scenes and
   scripts open, everything else is selected).
@@ -85,13 +85,13 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.2
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.0
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.5.2"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.0"
 ```
 
 With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard
@@ -103,25 +103,25 @@ and accepts connections from the plugin alone (a per-session token stored in a f
 
 ### Project Tools
 
-The *Project Tools* folder lists only the static parameterless methods you mark with `[EditorControlsAction]` — your
-own tools and cheats, without the menus that plugins and other packages add:
+Mark a static parameterless editor method with `[EditorControlsAction]` and it becomes a key — in the *Project Tools*
+folder and as its own action in the Options+ side panel (*Project Tools › Group*), ready to drag onto a key:
 
 ```csharp
 using Valentinchik.EditorControls;
 
 public static class MyTools
 {
-    // Icon: any Tabler icon name the plugin ships. Order: position in the folder (then by label).
-    [EditorControlsAction("Rebuild Atlas", Icon = "photo", Order = 1)]
+    // Icon: a Tabler icon the plugin ships. Group: subfolder + side-panel group. Order: position (then by label).
+    [EditorControlsAction("Rebuild Atlas", Icon = "photo", Group = "Art", Order = 1)]
     private static void RebuildAtlas() { /* ... */ }
 }
 ```
 
-The attribute is editor-only. Put such methods in an `Editor` folder, or — for cheats next to game code — wrap the
-attribute (and its `using`) in `#if UNITY_EDITOR`, so player builds compile without the package.
+Only marked methods are listed — no menus from plugins and packages (you can add whole menus by top-level name in
+*Preferences → Editor Controls for Unity*; any single menu item also goes on a key with *Run Menu Item*). The
+attribute is editor-only: use an `Editor` folder, or wrap it in `#if UNITY_EDITOR` in runtime code.
 
-To list whole menus as well, add their top-level names in *Preferences → Editor Controls for Unity* (empty by
-default; stored per project in EditorPrefs). Any single menu item can also go on a key with *Run Menu Item*.
+**Full guide — groups, cheats, asmdefs, good keypad tools: [docs/project-tools.md](docs/project-tools.md).**
 
 ### Test keys
 
@@ -136,6 +136,14 @@ Add assets to *Favorites* with *Assets → Editor Controls → Add to Favorites*
 menu). *Recent Assets* collects assets you select in the Project window or open in Prefab Mode. Favorites, recent
 assets and camera bookmarks are personal: they are stored in `UserSettings/EditorControls/`, which Unity's standard
 version-control ignore files exclude.
+
+## Using AI coding agents
+
+[`skills/editor-controls-actions`](skills/editor-controls-actions/SKILL.md) is a skill for coding agents (Claude Code
+and others that read `SKILL.md` skills). It teaches them to add keypad tools, cheats and tests correctly — attribute,
+placement, groups, Play Mode guards, undo, console messages, the package dependency. Copy the folder to
+`<your project>/.claude/skills/` and ask, for example, *"add a cheat to my keypad that refills ammo, in the Cheats
+group"*. Details in [docs/project-tools.md](docs/project-tools.md#working-with-ai-coding-agents).
 
 ## Building from source
 
@@ -163,6 +171,8 @@ overwritten by a newer default. `python3 profiles/build_profile.py --docs` re-re
 | `src/Bridge/` | Loopback server for the Unity package, editor state and lists |
 | `src/Haptics/` | MX Master 4 haptic events; waveforms in `src/package/events/extra/eventMapping.yaml` |
 | `unity/` | The Unity package (`com.valentinchik.editor-controls`) |
+| `skills/editor-controls-actions/` | Agent skill for adding keypad tools; `references/icons.md` is generated by `build_icons.py` |
+| `docs/` | Guides (`project-tools.md`) and the default-profile picture |
 | `icons/` | `map.tsv` (action → Tabler icon) and `build_icons.py` → `actionsymbols/` (picker) + `actionicons/` (keys) |
 | `profiles/` | Default profile layouts (`Loupedeck70` Keypad, `71` Dialpad, `72` Actions Ring) and their builder |
 | `localization/` | `translations.json` + `build_xliff.py` over the XLIFF template generated by Logi Plugin Service |

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.0 — 2026-10-03
+
+- Tool groups: `[EditorControlsAction(Group = "Cheats")]`. The *Project Tools* folder shows groups as subfolders
+  (with a back key inside), ordered by their tools' lowest `Order`.
+- Every project tool is also its own action in the Options+ side panel (*Project Tools › Group › tool*), so a single
+  tool can go straight onto a key or into the Actions Ring. Known tools are remembered while Unity is closed.
+- Agent skill [`skills/editor-controls-actions`](skills/editor-controls-actions/SKILL.md) for adding keypad tools with
+  coding agents, and the guide [docs/project-tools.md](docs/project-tools.md).
+
 ## 0.5.3 — 2026-10-03
 
 - *Project Tools* now lists only methods marked `[EditorControlsAction]`; menus from plugins and packages no longer

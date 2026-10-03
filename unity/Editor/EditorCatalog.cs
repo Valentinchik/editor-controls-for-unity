@@ -22,7 +22,7 @@ namespace Valentinchik.EditorControls
         public const string MenusList = "menus";
 
         private const int MaxScenes = 100;
-        private const int MaxTools = 100;
+        private const int MaxTools = 200;
         private const string MethodPrefix = "method:";
         private const string MenuPrefix = "menu:";
 
@@ -147,11 +147,23 @@ namespace Valentinchik.EditorControls
                 var attribute = method.GetCustomAttribute<EditorControlsActionAttribute>();
                 var id = $"{MethodPrefix}{method.DeclaringType?.FullName}.{method.Name}";
                 Methods[id] = method;
-                actions.Add((attribute.Order, new ListItem { id = id, label = attribute.Label ?? ObjectNames.NicifyVariableName(method.Name), icon = attribute.Icon }));
+                var group = string.IsNullOrWhiteSpace(attribute.Group) ? null : attribute.Group.Trim();
+                var label = attribute.Label ?? ObjectNames.NicifyVariableName(method.Name);
+                actions.Add((attribute.Order, new ListItem { id = id, label = label, icon = attribute.Icon, group = group }));
             }
 
+            // A group sits where its lowest Order puts it (ties by name); ungrouped tools come after the groups.
+            var groupRank = actions
+                .Where(action => action.Item.group != null)
+                .GroupBy(action => action.Item.group)
+                .OrderBy(group => group.Min(action => action.Order))
+                .ThenBy(group => group.Key, StringComparer.OrdinalIgnoreCase)
+                .Select((group, index) => (group.Key, index))
+                .ToDictionary(pair => pair.Key, pair => pair.index);
+
             var tools = actions
-                .OrderBy(action => action.Order)
+                .OrderBy(action => action.Item.group == null ? int.MaxValue : groupRank[action.Item.group])
+                .ThenBy(action => action.Order)
                 .ThenBy(action => action.Item.label, StringComparer.OrdinalIgnoreCase)
                 .Select(action => action.Item)
                 .ToList();

@@ -13,7 +13,7 @@ displayName: Editor Controls for Unity
 
 # Short description of the plugin.
 description: >
-  105 Unity Editor actions with icons for MX Keypad, MX Creative Console and Actions Ring —
+  106 Unity Editor actions with icons for MX Keypad, MX Creative Console and Actions Ring —
   play mode, scene view, GameObjects, tools, windows, animation, build, tests. Follows the shortcuts
   you set in Unity (Edit → Shortcuts). Ready-made profiles for every device. With the optional
   Unity package, keys show live editor state and work while Unity is in the background, folders list
@@ -23,7 +23,7 @@ description: >
 pluginFileName: UnityEditorControlsPlugin.dll
 
 # Plugin version.
-version: 0.5.3
+version: 0.6.0
 
 # Author of the plugin. The author can be a company or an individual developer.
 author: Valentyn Subbotin

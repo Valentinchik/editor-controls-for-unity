@@ -95,6 +95,17 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         protected virtual String LabelOf(CatalogItem item) => item.Label;
 
+        // Rebuilds the buttons after a change inside the folder (e.g. a subfolder was opened).
+        protected void ItemsChanged()
+        {
+            if (this.Refresh())
+            {
+                this.ButtonActionNamesChanged();
+            }
+
+            this.RedrawItems();
+        }
+
         // Redraws every button, e.g. after a mode inside the folder changed.
         protected void RedrawItems()
         {

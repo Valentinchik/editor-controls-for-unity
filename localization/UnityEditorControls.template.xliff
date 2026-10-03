@@ -3,7 +3,7 @@
   <file original="$UnityEditorControls___@general" source-language="en-US" target-language="" datatype="plaintext">
     <header>
       <generator>LogiPluginService 6.4.2.3414</generator>
-      <timestamp>2026-10-03T06-40-22-965</timestamp>
+      <timestamp>2026-10-03T10-58-52-807</timestamp>
       <computer>84fbdffe2fab1788e0c801f9722ed73a019748f422d3f15d475650a0c5053c30</computer>
     </header>
     <body>
@@ -383,6 +383,14 @@
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProfilerRecordCommand###description" translate="yes">
           <source>Profiling › Profiler › RecordToggle</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProjectToolCommand" translate="yes">
+          <source>Project Tool</source>
+          <target />
+        </trans-unit>
+        <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProjectToolCommand###description" translate="yes">
+          <source>Runs a method marked [EditorControlsAction] in the Unity project</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FrameSelectedCommand" translate="yes">

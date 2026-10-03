@@ -107,6 +107,7 @@ namespace Valentinchik.EditorControls
         public string id;
         public string label;
         public string icon;
+        public string group;
     }
 
     [Serializable]

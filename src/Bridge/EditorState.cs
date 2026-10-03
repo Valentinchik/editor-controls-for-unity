@@ -162,7 +162,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public EditorCatalog With(String name, IReadOnlyList<CatalogItem> items) =>
             new(new Dictionary<String, IReadOnlyList<CatalogItem>>(this._lists) { [name] = items });
 
-        // A "list" message: { name, items: [{ id, label, icon }] }.
+        // A "list" message: { name, items: [{ id, label, icon, group }] }.
         public static (String Name, IReadOnlyList<CatalogItem> Items) ParseList(JsonElement json)
         {
             var name = json.GetProperty("name").GetString();
@@ -170,13 +170,18 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 ? array.EnumerateArray().Select(item => new CatalogItem(
                     item.GetProperty("id").GetString(),
                     item.GetProperty("label").GetString(),
-                    item.TryGetProperty("icon", out var icon) && icon.GetString() is { Length: > 0 } iconName ? iconName : null)).ToList()
+                    Optional(item, "icon"),
+                    Optional(item, "group"))).ToList()
                 : Array.Empty<CatalogItem>();
             return (name, items);
         }
+
+        // JsonUtility writes missing strings as "" — treated as absent.
+        private static String Optional(JsonElement item, String name) =>
+            item.TryGetProperty(name, out var value) && value.GetString() is { Length: > 0 } text ? text : null;
     }
 
     // Id is what the Unity package needs back (scene path, tool id, layout file, asset GUID, menu path);
-    // Icon is an optional Tabler name.
-    public sealed record CatalogItem(String Id, String Label, String Icon);
+    // Icon is an optional Tabler name; Group, for project tools, the [EditorControlsAction] group.
+    public sealed record CatalogItem(String Id, String Label, String Icon, String Group = null);
 }

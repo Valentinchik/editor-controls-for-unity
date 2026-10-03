@@ -128,7 +128,8 @@
     "Time Scale 2×": "Масштаб времени 2×",
     "Time Scale": "Масштаб времени",
     "Reload Domain": "Перезагрузить домен",
-    "Clean Play": "Чистый запуск"
+    "Clean Play": "Чистый запуск",
+    "Project Tool": "Инструмент проекта"
   },
   "de-DE": {
     "2D / 3D": "2D / 3D",
@@ -258,7 +259,8 @@
     "Time Scale 2×": "Zeitskala 2×",
     "Time Scale": "Zeitskala",
     "Reload Domain": "Domain neu laden",
-    "Clean Play": "Sauberer Start"
+    "Clean Play": "Sauberer Start",
+    "Project Tool": "Projektwerkzeug"
   },
   "fr-FR": {
     "2D / 3D": "2D / 3D",
@@ -388,7 +390,8 @@
     "Time Scale 2×": "Échelle de temps 2×",
     "Time Scale": "Échelle de temps",
     "Reload Domain": "Recharger le domaine",
-    "Clean Play": "Lancement propre"
+    "Clean Play": "Lancement propre",
+    "Project Tool": "Outil du projet"
   },
   "es-ES": {
     "2D / 3D": "2D / 3D",
@@ -518,7 +521,8 @@
     "Time Scale 2×": "Escala de tiempo 2×",
     "Time Scale": "Escala de tiempo",
     "Reload Domain": "Recargar dominio",
-    "Clean Play": "Inicio limpio"
+    "Clean Play": "Inicio limpio",
+    "Project Tool": "Herramienta del proyecto"
   },
   "pt-BR": {
     "2D / 3D": "2D / 3D",
@@ -648,7 +652,8 @@
     "Time Scale 2×": "Escala de tempo 2×",
     "Time Scale": "Escala de tempo",
     "Reload Domain": "Recarregar domínio",
-    "Clean Play": "Início limpo"
+    "Clean Play": "Início limpo",
+    "Project Tool": "Ferramenta do projeto"
   },
   "ja-JP": {
     "2D / 3D": "2D / 3D",
@@ -778,7 +783,8 @@
     "Time Scale 2×": "タイムスケール 2×",
     "Time Scale": "タイムスケール",
     "Reload Domain": "ドメインを再読み込み",
-    "Clean Play": "クリーン再生"
+    "Clean Play": "クリーン再生",
+    "Project Tool": "プロジェクトツール"
   },
   "ko-KR": {
     "2D / 3D": "2D / 3D",
@@ -908,7 +914,8 @@
     "Time Scale 2×": "타임 스케일 2×",
     "Time Scale": "타임 스케일",
     "Reload Domain": "도메인 다시 로드",
-    "Clean Play": "클린 플레이"
+    "Clean Play": "클린 플레이",
+    "Project Tool": "프로젝트 도구"
   },
   "zh-CN": {
     "2D / 3D": "2D / 3D",
@@ -1038,6 +1045,7 @@
     "Time Scale 2×": "时间缩放 2×",
     "Time Scale": "时间缩放",
     "Reload Domain": "重新加载域",
-    "Clean Play": "干净运行"
+    "Clean Play": "干净运行",
+    "Project Tool": "项目工具"
   }
 }
