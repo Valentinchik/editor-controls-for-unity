@@ -18,7 +18,7 @@ in the Logi Options+ side panel.
 ## Requirements
 
 - The plugin from [Releases](https://github.com/Valentinchik/editor-controls-for-unity/releases) and the Unity package
-  `https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.3` (Unity 2022.3+).
+  `https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.4` (Unity 2022.3+).
 - `Group` needs package 0.6.0+, `Order` 0.5.3+.
 - The attribute is a compile-time dependency: in a team project, commit the `Packages/manifest.json` line together
   with the code that uses it.
@@ -61,6 +61,18 @@ The method must be `static` and take no parameters; anything else is skipped. It
 The list comes from the Unity project in front (or the one you used last). The plugin remembers the tools it has seen,
 so keys keep their names and icons while Unity is closed, and the side panel keeps the entries; a project's entries
 are refreshed whenever it reports its list.
+
+### Several projects
+
+Logi Options+ tells apps apart, not projects: every Unity project shares the same profiles and keys. So:
+
+- The **Project Tools folder** always shows the tools of the project in front — the right place for project-specific
+  tools.
+- A **key holding a single tool** stays on that key in every project. It is drawn dimmed in a project that doesn't
+  have the tool (pressing it only logs a warning in the Unity console), and with a crossed-out plug in a project
+  without the Unity package.
+- If you switch between projects with different tool sets, keep a separate Options+ profile per project (Options+ lets
+  an app have several profiles; switch them by hand), or rely on the folder.
 
 A key bound to a single tool remembers it by `Namespace.Type.Method`. Renaming or moving the method, its class or its
 namespace disconnects that key — bind it again from the side panel. Changing the label, icon, group or order is safe.

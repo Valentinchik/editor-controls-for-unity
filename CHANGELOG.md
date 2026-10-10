@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.4 — 2026-10-10
+
+- Several Unity projects: a key holding a single project tool is now dimmed when the project in front doesn't have
+  that tool, and shows a crossed-out plug when that project has no Unity package (Options+ shares one set of keys
+  across all projects). It no longer sends you to the package's install page — that stays for the plugin's own
+  package-only keys.
+- README, guide and agent skill: how keys behave across projects, and keeping project-specific tools in the
+  Project Tools folder or in a per-project Options+ profile.
+
 ## 0.6.3 — 2026-10-10
 
 - Without the Unity package, keys that need it no longer stay silent: with Unity open, a press opens the install

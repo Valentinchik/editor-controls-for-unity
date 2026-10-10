@@ -66,6 +66,10 @@ groups as subfolders (with a back key inside), and the side panel lists each too
   Changing `Label`, `Icon`, `Group` or `Order` is safe. Before such a rename, tell the user which keys need re-binding.
 - If the project already has keypad tools without a `Group` and you add a group next to them, mention it and offer to
   group them too.
+- **Keys are per app, not per project.** Options+ gives all Unity projects the same keys. The Project Tools folder
+  follows the project in front; a single-tool key is dimmed where its tool doesn't exist and shows a crossed-out plug
+  in a project without the package. When the user works across projects, suggest the folder (or a separate Options+
+  profile per project) for project-specific tools.
 
 ## Making a tool keypad-friendly
 

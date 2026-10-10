@@ -10,6 +10,8 @@ namespace Loupedeck.UnityEditorControlsPlugin
     // Every [EditorControlsAction] tool as its own action in the Options+ side panel, under Project Tools › <Group>, so a
     // single tool can go straight onto a key. Tools are remembered in a plugin setting: keys keep their name and icon,
     // and the panel keeps its entries, while Unity is closed. A project's entries are replaced whenever it reports its list.
+    // Options+ profiles are per app, not per project, so a key may hold a tool of another project: it is drawn dimmed when
+    // the project in front lacks the tool, and with a crossed-out plug when that project has no package.
     public sealed class ProjectToolCommand : PluginDynamicCommand
     {
         private const String SuperGroup = "Project Tools";
@@ -18,6 +20,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private readonly Object _sync = new();
         private Dictionary<String, KnownTool> _known = new();
         private IReadOnlyList<CatalogItem> _lastList;
+        private (Boolean Connected, Boolean Reloading, IReadOnlyList<CatalogItem> Tools) _drawnFor;
 
         public ProjectToolCommand()
             : base(displayName: "Project Tool", description: "Runs a method marked [EditorControlsAction] in the Unity project" + UnityPackage.Required, groupName: SuperGroup)
@@ -46,9 +49,11 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 this._known.TryGetValue(actionParameter ?? "", out tool);
             }
 
-            if (tool != null && !UnityBridge.TrySend(new { type = "runTool", id = tool.Id }))
+            // Without a connected package the key already shows a crossed-out plug; a project's own tool is no reason to
+            // send the user to the package's install page. A tool missing in this project is reported by Unity's console.
+            if (tool != null && UnityBridge.View.Connected)
             {
-                UnityPackage.ExplainMissing(this.Plugin.ClientApplication);
+                UnityBridge.TrySend(new { type = "runTool", id = tool.Id });
             }
         }
 
@@ -62,18 +67,26 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         protected override BitmapImage GetCommandImage(String actionParameter, PluginImageSize imageSize)
         {
-            String icon;
+            KnownTool tool;
             lock (this._sync)
             {
-                icon = this._known.TryGetValue(actionParameter ?? "", out var tool) ? tool.Icon : null;
+                this._known.TryGetValue(actionParameter ?? "", out tool);
             }
 
-            return KeyRenderer.Glyph(icon ?? "hammer", KeyRenderer.Normal, imageSize);
+            var view = UnityBridge.View;
+            if (!view.Connected && !view.Reloading)
+            {
+                return KeyRenderer.Glyph("plug-x", KeyRenderer.Normal, imageSize);
+            }
+
+            var available = tool == null || !view.Connected || UnityBridge.ActiveCatalog.Get(EditorCatalog.Tools).Any(item => item.Id == tool.Id);
+            return KeyRenderer.Glyph(tool?.Icon ?? "hammer", available ? KeyRenderer.Normal : KeyRenderer.Dim, imageSize);
         }
 
         private void OnBridgeChanged()
         {
             var tools = UnityBridge.ActiveCatalog.Get(EditorCatalog.Tools);
+            this.RedrawIfTargetChanged(tools);
             var project = UnityBridge.ActiveProject;
             if (project == null || ReferenceEquals(tools, this._lastList))
             {
@@ -99,6 +112,25 @@ namespace Loupedeck.UnityEditorControlsPlugin
             }
 
             this.PublishParameters();
+        }
+
+        // Keys depend on which project is in front and on its tool list; redraw only when one of those changes.
+        private void RedrawIfTargetChanged(IReadOnlyList<CatalogItem> tools)
+        {
+            var view = UnityBridge.View;
+            var target = (view.Connected, view.Reloading, tools);
+            lock (this._sync)
+            {
+                if (target.Connected == this._drawnFor.Connected && target.Reloading == this._drawnFor.Reloading
+                    && ReferenceEquals(target.tools, this._drawnFor.Tools))
+                {
+                    return;
+                }
+
+                this._drawnFor = target;
+            }
+
+            this.ActionImageChanged();
         }
 
         private void PublishParameters()

@@ -86,13 +86,13 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.3
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.4
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.3"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.4"
 ```
 
 With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard
@@ -121,6 +121,11 @@ public static class MyTools
 Only marked methods are listed — no menus from plugins and packages (you can add whole menus by top-level name in
 *Preferences → Editor Controls for Unity*; any single menu item also goes on a key with *Run Menu Item*). The
 attribute is editor-only: use an `Editor` folder, or wrap it in `#if UNITY_EDITOR` in runtime code.
+
+**Several projects:** Options+ keeps one set of keys for Unity, not one per project. The *Project Tools* folder
+follows the project in front; a key holding a single tool is dimmed in a project that doesn't have that tool, and shows
+a crossed-out plug in a project without the package. Keep project-specific tools in the folder, or keep a separate
+Options+ profile per project and switch it by hand.
 
 **Full guide — groups, cheats, asmdefs, good keypad tools: [docs/project-tools.md](docs/project-tools.md).**
 
