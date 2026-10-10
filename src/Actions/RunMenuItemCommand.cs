@@ -15,7 +15,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         public RunMenuItemCommand()
         {
             this.DisplayName = "Run Menu Item";
-            this.Description = "Runs any Unity menu item chosen in the action settings (needs the Unity package)";
+            this.Description = "Runs any Unity menu item chosen in the action settings" + UnityPackage.Required;
             this.GroupName = Groups.Project;
 
             this.ActionEditor.AddControlEx(new ActionEditorListbox(MenuControl, "Menu item").SetRequired());
@@ -40,9 +40,17 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 ? path.Substring(path.LastIndexOf('/') + 1)
                 : this.DisplayName;
 
-        protected override Boolean RunCommand(ActionEditorActionParameters actionParameters) =>
-            actionParameters.TryGetString(MenuControl, out var path) && !String.IsNullOrEmpty(path)
-            && UnityBridge.TrySend(new { type = "runTool", id = "menu:" + path });
+        protected override Boolean RunCommand(ActionEditorActionParameters actionParameters)
+        {
+            if (!UnityBridge.View.Connected)
+            {
+                UnityPackage.ExplainMissing(this.Plugin.ClientApplication);
+                return false;
+            }
+
+            return actionParameters.TryGetString(MenuControl, out var path) && !String.IsNullOrEmpty(path)
+                && UnityBridge.TrySend(new { type = "runTool", id = "menu:" + path });
+        }
 
         private void OnListboxItemsRequested(Object sender, ActionEditorListboxItemsRequestedEventArgs e)
         {

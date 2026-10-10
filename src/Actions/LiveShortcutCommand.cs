@@ -70,12 +70,12 @@ namespace Loupedeck.UnityEditorControlsPlugin
             view.Connected && this.IsOn(view.State) ? new KeyLook(KeyRenderer.Active) : null;
     }
 
-    // An action only the Unity package can perform (there is no Unity shortcut behind it).
-    // Without the package the key shows a crossed-out plug and does nothing.
+    // An action only the Unity package can perform (there is no Unity shortcut behind it). Without the package the key
+    // shows a crossed-out plug, its description says so, and a press opens the install instructions.
     public abstract class BridgeCommand : LiveCommand
     {
         protected BridgeCommand(String displayName, String description, String groupName)
-            : base(displayName, description, groupName)
+            : base(displayName, description + UnityPackage.Required, groupName)
         {
         }
 
@@ -92,6 +92,10 @@ namespace Loupedeck.UnityEditorControlsPlugin
             if (UnityBridge.View.Connected)
             {
                 this.Run();
+            }
+            else
+            {
+                UnityPackage.ExplainMissing(this.Plugin.ClientApplication);
             }
         }
 

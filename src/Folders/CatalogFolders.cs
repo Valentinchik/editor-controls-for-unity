@@ -7,7 +7,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
     // Scenes in Build Profiles first, then the rest of the project; the open scene is highlighted.
     public sealed class ScenesFolder : UnityCatalogFolder
     {
-        public ScenesFolder() : base("Scenes") { }
+        public ScenesFolder() : base("Scenes", "Scenes of the open project; the open one is highlighted") { }
 
         protected override String ItemIcon => "map-pin";
 
@@ -36,7 +36,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private String _sourceGroup;
         private IReadOnlyList<CatalogItem> _view = Array.Empty<CatalogItem>();
 
-        public ProjectToolsFolder() : base("Project Tools") { }
+        public ProjectToolsFolder() : base("Project Tools", "Methods marked [EditorControlsAction] in the open project, by group") { }
 
         protected override String ItemIcon => "hammer";
 
@@ -103,7 +103,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
     // Window → Layouts: Unity's layouts and the user's saved ones; the loaded one is highlighted.
     public sealed class LayoutsFolder : UnityCatalogFolder
     {
-        public LayoutsFolder() : base("Layouts") { }
+        public LayoutsFolder() : base("Layouts", "Unity's window layouts and the ones you saved") { }
 
         protected override String ItemIcon => "layout";
 
@@ -125,7 +125,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
     // scenes and scripts open, everything else is selected and pinged.
     public sealed class RecentAssetsFolder : UnityCatalogFolder
     {
-        public RecentAssetsFolder() : base("Recent Assets") { }
+        public RecentAssetsFolder() : base("Recent Assets", "Assets you recently selected or opened in Prefab Mode") { }
 
         protected override String ItemIcon => "file-unknown";
 
@@ -139,7 +139,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
     // Assets added with Assets → Editor Controls → Add to Favorites (per project, not shared through version control).
     public sealed class FavoritesFolder : UnityCatalogFolder
     {
-        public FavoritesFolder() : base("Favorites") { }
+        public FavoritesFolder() : base("Favorites", "Assets added with Assets → Editor Controls → Add to Favorites") { }
 
         protected override String ItemIcon => "file-unknown";
 
@@ -161,7 +161,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
         private Boolean _saveMode;
 
-        public CameraBookmarksFolder() : base("Camera Bookmarks") { }
+        public CameraBookmarksFolder() : base("Camera Bookmarks", "Saved Scene View cameras for the open scene") { }
 
         protected override String ItemIcon => "bookmark";
 

@@ -11,14 +11,14 @@ namespace Loupedeck.UnityEditorControlsPlugin
     public abstract class UnityCatalogFolder : PluginDynamicFolder
     {
         private const String NoPackageKey = "no-package";
-        private const String HelpUrl = "https://github.com/Valentinchik/editor-controls-for-unity#unity-package";
 
         private Dictionary<String, CatalogItem> _items = new();
         private IReadOnlyList<CatalogItem> _shown;
 
-        protected UnityCatalogFolder(String displayName)
+        protected UnityCatalogFolder(String displayName, String description)
         {
             this.DisplayName = displayName;
+            this.Description = description + UnityPackage.Required;
             this.GroupName = Groups.Folders;
         }
 
@@ -79,7 +79,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
             }
             else if (actionParameter == NoPackageKey && !UnityBridge.View.Connected)
             {
-                Browser.Open(HelpUrl);
+                Browser.Open(UnityPackage.HelpUrl);
             }
         }
 

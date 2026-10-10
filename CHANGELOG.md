@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.3 — 2026-10-10
+
+- Without the Unity package, keys that need it no longer stay silent: with Unity open, a press opens the install
+  instructions (at most once every 10 seconds). Their descriptions in the Options+ action list now end with
+  "· needs the Unity package", like "· Unity 6+" for Unity 6 actions; dynamic folders got descriptions too.
+
 ## 0.6.2 — 2026-10-10
 
 - Action icons in the Options+ action list now read in both the light and the dark theme. Options+ draws them from

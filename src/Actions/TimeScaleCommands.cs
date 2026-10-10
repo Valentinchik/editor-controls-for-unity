@@ -77,7 +77,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private const Int32 MaxStepsPerEvent = 3;
 
         public TimeScaleAdjustment()
-            : base(displayName: "Time Scale", description: "Changes Time.timeScale in Play Mode; press to reset to 1×", groupName: Groups.Dials, hasReset: true)
+            : base(displayName: "Time Scale", description: "Changes Time.timeScale in Play Mode; press to reset to 1×" + UnityPackage.Required, groupName: Groups.Dials, hasReset: true)
         {
         }
 

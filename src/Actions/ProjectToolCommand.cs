@@ -20,7 +20,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
         private IReadOnlyList<CatalogItem> _lastList;
 
         public ProjectToolCommand()
-            : base(displayName: "Project Tool", description: "Runs a method marked [EditorControlsAction] in the Unity project", groupName: SuperGroup)
+            : base(displayName: "Project Tool", description: "Runs a method marked [EditorControlsAction] in the Unity project" + UnityPackage.Required, groupName: SuperGroup)
         {
         }
 
@@ -46,9 +46,9 @@ namespace Loupedeck.UnityEditorControlsPlugin
                 this._known.TryGetValue(actionParameter ?? "", out tool);
             }
 
-            if (tool != null)
+            if (tool != null && !UnityBridge.TrySend(new { type = "runTool", id = tool.Id }))
             {
-                UnityBridge.TrySend(new { type = "runTool", id = tool.Id });
+                UnityPackage.ExplainMissing(this.Plugin.ClientApplication);
             }
         }
 

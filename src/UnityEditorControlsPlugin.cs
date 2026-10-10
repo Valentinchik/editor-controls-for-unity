@@ -5,7 +5,6 @@ namespace Loupedeck.UnityEditorControlsPlugin
 
     public class UnityEditorControlsPlugin : Plugin
     {
-        private const String PackageHelpUrl = "https://github.com/Valentinchik/editor-controls-for-unity#unity-package";
         private static readonly TimeSpan PackageHintDelay = TimeSpan.FromSeconds(20);
 
         private Timer _statusTimer;
@@ -62,7 +61,7 @@ namespace Loupedeck.UnityEditorControlsPlugin
             {
                 this.SetStatus(Loupedeck.PluginStatus.Warning,
                     "Keys work as Unity shortcuts. Add the com.valentinchik.editor-controls package to your project for live state and background control.",
-                    PackageHelpUrl);
+                    UnityPackage.HelpUrl);
             }
         }
 

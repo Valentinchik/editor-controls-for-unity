@@ -64,7 +64,8 @@ With the [Unity package](#unity-package):
 - **Logi Options+** with Logi Plugin Service 6.4 or newer.
 - Without the Unity package, actions are Unity keyboard shortcuts, so the Unity Editor must be the active window.
   With the package (Unity 2022.3+), most actions run directly through the editor API, and the render-mode and
-  grid-snap actions work in Unity 2022.3 too. Folders, time scale, tests, *Run Menu Item* and haptics need the package.
+  grid-snap actions work in Unity 2022.3 too. Folders, time scale, tests, *Run Menu Item* and haptics need the package —
+  their descriptions say so, and without it their keys show a crossed-out plug and open the install instructions.
 
 ## Install
 
@@ -85,13 +86,13 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.2
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.3
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.2"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.3"
 ```
 
 With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard

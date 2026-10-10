@@ -3,7 +3,7 @@
   <file original="$UnityEditorControls___@general" source-language="en-US" target-language="" datatype="plaintext">
     <header>
       <generator>LogiPluginService 6.4.2.3414</generator>
-      <timestamp>2026-10-03T10-58-52-807</timestamp>
+      <timestamp>2026-10-10T17-13-44-769</timestamp>
       <computer>84fbdffe2fab1788e0c801f9722ed73a019748f422d3f15d475650a0c5053c30</computer>
     </header>
     <body>
@@ -326,7 +326,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ReloadDomainCommand###description" translate="yes">
-          <source>Reloads scripts without recompiling, resetting static state</source>
+          <source>Reloads scripts without recompiling, resetting static state · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CleanPlayCommand" translate="yes">
@@ -334,7 +334,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.CleanPlayCommand###description" translate="yes">
-          <source>Reloads the domain, then enters Play Mode; restarts the game if it is running</source>
+          <source>Reloads the domain, then enters Play Mode; restarts the game if it is running · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.NewSceneCommand" translate="yes">
@@ -390,7 +390,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.ProjectToolCommand###description" translate="yes">
-          <source>Runs a method marked [EditorControlsAction] in the Unity project</source>
+          <source>Runs a method marked [EditorControlsAction] in the Unity project · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.FrameSelectedCommand" translate="yes">
@@ -570,7 +570,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunEditModeTestsCommand###description" translate="yes">
-          <source>Runs the project's tests with the Unity Test Framework</source>
+          <source>Runs the project's tests with the Unity Test Framework · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunPlayModeTestsCommand" translate="yes">
@@ -590,7 +590,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleQuarterCommand###description" translate="yes">
-          <source>Sets Time.timeScale in Play Mode</source>
+          <source>Sets Time.timeScale in Play Mode · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleNormalCommand" translate="yes">
@@ -606,7 +606,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleSlowerCommand###description" translate="yes">
-          <source>Changes Time.timeScale in Play Mode by one step</source>
+          <source>Changes Time.timeScale in Play Mode by one step · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.TimeScaleFasterCommand" translate="yes">
@@ -774,7 +774,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___ResetLoupedeck.UnityEditorControlsPlugin.TimeScaleAdjustment###description" translate="yes">
-          <source>Changes Time.timeScale in Play Mode; press to reset to 1×</source>
+          <source>Changes Time.timeScale in Play Mode; press to reset to 1× · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunMenuItemCommand" translate="yes">
@@ -782,7 +782,7 @@
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___Loupedeck.UnityEditorControlsPlugin.RunMenuItemCommand###description" translate="yes">
-          <source>Runs any Unity menu item chosen in the action settings (needs the Unity package)</source>
+          <source>Runs any Unity menu item chosen in the action settings · needs the Unity package</source>
           <target />
         </trans-unit>
         <trans-unit id="$UnityEditorControls___#DynamicFolder" translate="yes">
@@ -832,24 +832,48 @@
         <source>Scenes</source>
         <target />
       </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.ScenesFolder###description" translate="yes">
+        <source>Scenes of the open project; the open one is highlighted · needs the Unity package</source>
+        <target />
+      </trans-unit>
       <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.ProjectToolsFolder" translate="yes">
         <source>Project Tools</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.ProjectToolsFolder###description" translate="yes">
+        <source>Methods marked [EditorControlsAction] in the open project, by group · needs the Unity package</source>
         <target />
       </trans-unit>
       <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.LayoutsFolder" translate="yes">
         <source>Layouts</source>
         <target />
       </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.LayoutsFolder###description" translate="yes">
+        <source>Unity's window layouts and the ones you saved · needs the Unity package</source>
+        <target />
+      </trans-unit>
       <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.RecentAssetsFolder" translate="yes">
         <source>Recent Assets</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.RecentAssetsFolder###description" translate="yes">
+        <source>Assets you recently selected or opened in Prefab Mode · needs the Unity package</source>
         <target />
       </trans-unit>
       <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.FavoritesFolder" translate="yes">
         <source>Favorites</source>
         <target />
       </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.FavoritesFolder###description" translate="yes">
+        <source>Assets added with Assets → Editor Controls → Add to Favorites · needs the Unity package</source>
+        <target />
+      </trans-unit>
       <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.CameraBookmarksFolder" translate="yes">
         <source>Camera Bookmarks</source>
+        <target />
+      </trans-unit>
+      <trans-unit id="$UnityEditorControls___#DynamicFolder___DynamicFolder#Loupedeck.UnityEditorControlsPlugin.CameraBookmarksFolder###description" translate="yes">
+        <source>Saved Scene View cameras for the open scene · needs the Unity package</source>
         <target />
       </trans-unit>
       <group id="@groups">
