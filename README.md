@@ -85,13 +85,13 @@ It is editor-only and never ends up in a player build.
 Install it in *Window → Package Manager → + → Install (Add) package from git URL…*:
 
 ```
-https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.1
+https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.2
 ```
 
 or add it to `Packages/manifest.json`:
 
 ```json
-"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.1"
+"com.valentinchik.editor-controls": "https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.2"
 ```
 
 With several Unity projects open, the keys act on the one in front — through the package if it has it, as keyboard
@@ -147,7 +147,7 @@ group"*. Details in [docs/project-tools.md](docs/project-tools.md#working-with-a
 
 ## Building from source
 
-Requirements: .NET 10 SDK, Logi Options+ (Logi Plugin Service ≥ 6.4), Python 3 with Pillow, and
+Requirements: .NET 10 SDK, Logi Options+ (Logi Plugin Service ≥ 6.4), Python 3 with Pillow and picosvg, and
 `LogiPluginTool` (`dotnet tool install --global LogiPluginTool`). The build scripts are for macOS.
 
 ```bash

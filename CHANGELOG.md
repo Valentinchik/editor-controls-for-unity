@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.2 — 2026-10-10
+
+- Action icons in the Options+ action list now read in both the light and the dark theme. Options+ draws them from
+  fills only, so the outline icons used to turn into solid squares and filled blobs in the light theme and vanish in
+  the dark one. Every icon is now a filled outline (strokes expanded with picosvg), single-colour on a transparent
+  background, without the invisible bounding box Tabler icons start with.
+- Dynamic folders also get their icons under the `#DynamicFolder___DynamicFolder#…` names Options+ looks up.
+- New plugin icon with a transparent background: a dark glyph with a white outline that reads on both themes, inside
+  the 192×192 area Logi asks for. `icons/build_icons.py` generates it.
+
 ## 0.6.1 — 2026-10-03
 
 - The Unity package (`unity/`), the agent skill (`skills/`) and the code examples in the docs are now MIT-licensed,

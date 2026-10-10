@@ -18,7 +18,7 @@ in the Logi Options+ side panel.
 ## Requirements
 
 - The plugin from [Releases](https://github.com/Valentinchik/editor-controls-for-unity/releases) and the Unity package
-  `https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.1` (Unity 2022.3+).
+  `https://github.com/Valentinchik/editor-controls-for-unity.git?path=/unity#v0.6.2` (Unity 2022.3+).
 - `Group` needs package 0.6.0+, `Order` 0.5.3+.
 - The attribute is a compile-time dependency: in a team project, commit the `Packages/manifest.json` line together
   with the code that uses it.
