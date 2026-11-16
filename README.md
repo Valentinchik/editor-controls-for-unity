@@ -2,8 +2,9 @@
 
 A Logi Options+ plugin that puts the Unity Editor on your Logitech keys, dials and Actions Ring:
 **106 ready-made actions with icons**, **6 dynamic folders** and **default profiles for every device**, so there is
-nothing to set up by hand. Add the optional [Unity package](#unity-package) and the keys show live editor state,
-folders fill with your project's scenes, layouts and assets, and an MX Master 4 vibrates when the editor needs you.
+nothing to set up by hand. Get it on the [Logitech Marketplace](https://marketplace.logi.com/plugin/UnityEditorControls/en).
+Add the optional [Unity package](#unity-package) and the keys show live editor state, folders fill with your project's
+scenes, layouts and assets, and an MX Master 4 vibrates when the editor needs you.
 
 ![Default profiles](docs/default-profiles.png)
 
@@ -69,7 +70,8 @@ With the [Unity package](#unity-package):
 
 ## Install
 
-- **Logitech Marketplace** — search for *Editor Controls for Unity* in Logi Options+ *(coming soon)*.
+- **[Logitech Marketplace](https://marketplace.logi.com/plugin/UnityEditorControls/en)** — install from the store page,
+  or search for *Editor Controls for Unity* in Logi Options+.
 - **Manually** — download `UnityEditorControls_<version>.lplug4` from [Releases](../../releases) and double-click it.
 
 Options+ lists apps installed in the top levels of `/Applications`, and Unity Hub installs editors deeper than that, so
